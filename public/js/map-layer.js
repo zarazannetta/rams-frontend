@@ -1,7 +1,8 @@
-var url = "http://117.53.47.111:91/api/data/aset/";
+var url_api = "http://117.53.47.111:91/api/data/aset/";
+var url_icon = "http://localhost:8000/img/map-icons/";
 
 function getAdministratifPolygonLayer() {
-    return new L.GeoJSON.AJAX(url + "administratif_polygon", {
+    return new L.GeoJSON.AJAX(url_api + "administratif_polygon", {
         style: function (feature) {
             return {
                 weight: 1,
@@ -24,7 +25,7 @@ function getAdministratifPolygonLayer() {
 }
 
 function getDataGeometrikJalanPolygonLayer() {
-    return new L.GeoJSON.AJAX(url + "data_geometrik_jalan_polygon", {
+    return new L.GeoJSON.AJAX(url_api + "data_geometrik_jalan_polygon", {
         style: function (feature) {
             return {
                 weight: 1,
@@ -110,7 +111,7 @@ function getDataGeometrikJalanColor(data) {
 }
 
 function getIRIPolygonLayer() {
-    return new L.GeoJSON.AJAX(url + "iri_polygon", {
+    return new L.GeoJSON.AJAX(url_api + "iri_polygon", {
         style: function (feature) {
             return {
                 weight: 1,
@@ -149,7 +150,7 @@ function getIRIColor(data) {
 }
 
 function getJembatanPolygonLayer() {
-    return new L.GeoJSON.AJAX(url + "jembatan_polygon", {
+    return new L.GeoJSON.AJAX(url_api + "jembatan_polygon", {
         style: function (feature) {
             return {
                 weight: 1,
@@ -174,7 +175,7 @@ function getJembatanPolygonLayer() {
 }
 
 function getLapisPermukaanPolygonLayer() {
-    return new L.GeoJSON.AJAX(url + "lapis_permukaan_polygon", {
+    return new L.GeoJSON.AJAX(url_api + "lapis_permukaan_polygon", {
         style: function (feature) {
             return {
                 weight: 1,
@@ -209,7 +210,7 @@ function getLapisPermukaanColor(data) {
 }
 
 function getLapisPondasiAtas1PolygonLayer() {
-    return new L.GeoJSON.AJAX(url + "lapis_pondasi_atas1_polygon", {
+    return new L.GeoJSON.AJAX(url_api + "lapis_pondasi_atas1_polygon", {
         style: function (feature) {
             return {
                 weight: 1,
@@ -244,7 +245,7 @@ function getLapisPondasiAtas1Color(data) {
 }
 
 function getLapisPondasiAtas2PolygonLayer() {
-    return new L.GeoJSON.AJAX(url + "lapis_pondasi_atas2_polygon", {
+    return new L.GeoJSON.AJAX(url_api + "lapis_pondasi_atas2_polygon", {
         style: function (feature) {
             return {
                 weight: 1,
@@ -279,7 +280,7 @@ function getLapisPondasiAtas2Color(data) {
 }
 
 function getLapisPondasiBawahPolygonLayer() {
-    return new L.GeoJSON.AJAX(url + "lapis_pondasi_bawah_polygon", {
+    return new L.GeoJSON.AJAX(url_api + "lapis_pondasi_bawah_polygon", {
         style: function (feature) {
             return {
                 weight: 1,
@@ -314,7 +315,7 @@ function getLapisPondasiBawahColor(data) {
 }
 
 function getLHRPolygonLayer() {
-    return new L.GeoJSON.AJAX(url + "lhr_polygon", {
+    return new L.GeoJSON.AJAX(url_api + "lhr_polygon", {
         style: function (feature) {
             return {
                 weight: 1,
@@ -363,7 +364,7 @@ function getLHRPolygonLayer() {
 }
 
 function getRuwasjaPolygonLayer() {
-    return new L.GeoJSON.AJAX(url + "ruwasja_polygon", {
+    return new L.GeoJSON.AJAX(url_api + "ruwasja_polygon", {
         style: function (feature) {
             return {
                 weight: 1,
@@ -384,7 +385,7 @@ function getRuwasjaPolygonLayer() {
 }
 
 function getSegmenKonstruksiPolygonLayer() {
-    return new L.GeoJSON.AJAX(url + "segmen_konstruksi_polygon", {
+    return new L.GeoJSON.AJAX(url_api + "segmen_konstruksi_polygon", {
         style: function (feature) {
             return {
                 weight: 1,
@@ -425,7 +426,7 @@ function getSegmenKonstruksiColor(data) {
 }
 
 function getSegmenLegerPolygonLayer() {
-    return new L.GeoJSON.AJAX(url + "segmen_leger_polygon", {
+    return new L.GeoJSON.AJAX(url_api + "segmen_leger_polygon", {
         style: function (feature) {
             return {
                 weight: 1,
@@ -461,7 +462,7 @@ function getSegmenLegerColor(data) {
 }
 
 function getSegmenPerlengkapanPolygonLayer() {
-    return new L.GeoJSON.AJAX(url + "segmen_perlengkapan_polygon", {
+    return new L.GeoJSON.AJAX(url_api + "segmen_perlengkapan_polygon", {
         style: function (feature) {
             return {
                 weight: 1,
@@ -495,7 +496,7 @@ function getSegmenPerlengkapanColor(data) {
 }
 
 function getSegmenTolPolygonLayer() {
-    return new L.GeoJSON.AJAX(url + "segmen_tol_polygon", {
+    return new L.GeoJSON.AJAX(url_api + "segmen_tol_polygon", {
         style: function (feature) {
             return {
                 weight: 1,
@@ -526,4 +527,289 @@ function getSegmenTolColor(data) {
         default:
             return "black";
     }
+}
+
+function getLampuLalulintasPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "lampu_lalulintas_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "lampu.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getManholePointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "manhole_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "manhole.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getGerbangPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "gerbang_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "gerbang.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getPatokHMPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "patok_hm_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "patok_hm.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getPatokKMPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "patok_km_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "patok_km.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getPatokLJPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "patok_lj_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "patok_lj.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getPatokRMJPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "patok_rmj_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "patok_rmj.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getPatokROWPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "patok_row_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "patok_row.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getPatokPemanduPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "patok_pemandu_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "patok_pemandu.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getReflektorPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "reflektor_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "reflektor.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getRambuLalulintasPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "rambu_lalulintas_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "rambu_lalu_lintas.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getRambuPenunjukarahPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "rambu_penunjukarah_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "rambu_penunjuk_arah.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getRumahKabelPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "rumah_kabel_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "rumah_kabel.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getStaTextPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "sta_text_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "sta_text.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getTiangListrikPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "tiang_listrik_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "listrik.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getTiangTeleponPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "tiang_telepon_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "telepon.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getVMSPointLayer() {
+    return new L.GeoJSON.AJAX(url_api + "vms_point", {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: url_icon + "vms.png",
+                    iconSize: [32, 32],
+                })
+            });
+        }
+    });
+}
+
+function getBatasDesaLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "batas_desa_line");
+}
+
+function getBoxCulvertLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "box_culvert_line");
+}
+
+function getBPTLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "bpt_line");
+}
+
+function getBronjongLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "bronjong_line");
+}
+
+function getConcreteBarrierLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "concrete_barrier_line");
+}
+
+function getGorongGorongLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "gorong_gorong_line");
+}
+
+function getGuardrailLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "guardrail_line");
+}
+
+function getJalanLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "jalan_line");
+}
+
+function getListrikBawahtanahLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "listrik_bawahtanah_line");
+}
+
+function getMarkaLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "marka_line");
+}
+
+function getPagarOperasionalLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "pagar_operasional_line");
+}
+
+function getPitaKejutLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "pita_kejut_line");
+}
+
+function getRiolLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "riol_line");
+}
+
+function getSaluranLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "saluran_line");
+}
+
+function getSungaiLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "sungai_line");
+}
+
+function getTeleponBawahtanahLineLayer() {
+    return new L.GeoJSON.AJAX(url_api + "telepon_bawahtanah_line");
 }

@@ -59,50 +59,6 @@
                         <td class="text-right">KM: 140+892, X: 525626.860, Y: 9460898.902, Z: 39.063, Deskripsi: 9 meter setelah Box Culvert KM 140+883</td>
                     </tr>
                 </table>
-                <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link active" id="pills-data-teknik-1-tab" data-toggle="pill" data-target="#pills-data-teknik-1" type="button" role="tab" aria-controls="pills-data-teknik-1" aria-selected="true">Data Teknik 1</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-data-teknik-2-tab" data-toggle="pill" data-target="#pills-data-teknik-2" type="button" role="tab" aria-controls="pills-data-teknik-2" aria-selected="false">Data Teknik 2</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-data-teknik-3-tab" data-toggle="pill" data-target="#pills-data-teknik-3" type="button" role="tab" aria-controls="pills-data-teknik-3" aria-selected="false">Data Teknik 3</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-data-teknik-4-tab" data-toggle="pill" data-target="#pills-data-teknik-4" type="button" role="tab" aria-controls="pills-data-teknik-4" aria-selected="false">Data Teknik 4</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-data-teknik-5-tab" data-toggle="pill" data-target="#pills-data-teknik-5" type="button" role="tab" aria-controls="pills-data-teknik-5" aria-selected="false">Data Teknik 5</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-data-lainnya-tab" data-toggle="pill" data-target="#pills-data-lainnya" type="button" role="tab" aria-controls="pills-data-lainnya" aria-selected="false">Data Lainnya</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-lintasan-harian-tab" data-toggle="pill" data-target="#pills-lintasan-harian" type="button" role="tab" aria-controls="pills-lintasan-harian" aria-selected="false">Lintasan Harian</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-data-geometrik-tab" data-toggle="pill" data-target="#pills-data-geometrik" type="button" role="tab" aria-controls="pills-data-geometrik" aria-selected="false">Data Geometrik</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-data-lingkungan-jalan-tab" data-toggle="pill" data-target="#pills-data-lingkungan-jalan" type="button" role="tab" aria-controls="pills-data-lingkungan-jalan" aria-selected="false">Data Lingkungan Jalan</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-legalisasi-tab" data-toggle="pill" data-target="#pills-legalisasi" type="button" role="tab" aria-controls="pills-legalisasi" aria-selected="false">Legalisasi</button>
-                    </li>
-                </ul>
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-data-teknik-1" role="tabpanel" aria-labelledby="pills-data-teknik-1-tab">...</div>
-                    <div class="tab-pane fade" id="pills-data-teknik-2" role="tabpanel" aria-labelledby="pills-data-teknik-2-tab">...</div>
-                    <div class="tab-pane fade" id="pills-data-teknik-3" role="tabpanel" aria-labelledby="pills-data-teknik-3-tab">...</div>
-                    <div class="tab-pane fade" id="pills-data-teknik-4" role="tabpanel" aria-labelledby="pills-data-teknik-4-tab">...</div>
-                    <div class="tab-pane fade" id="pills-data-teknik-5" role="tabpanel" aria-labelledby="pills-data-teknik-5-tab">...</div>
-                    <div class="tab-pane fade" id="pills-data-lainnya" role="tabpanel" aria-labelledby="pills-data-lainnya-tab">...</div>
-                    <div class="tab-pane fade" id="pills-lintasan-harian" role="tabpanel" aria-labelledby="pills-lintasan-harian-tab">...</div>
-                    <div class="tab-pane fade" id="pills-data-geometrik" role="tabpanel" aria-labelledby="pills-data-geometrik-tab">...</div>
-                    <div class="tab-pane fade" id="pills-data-lingkungan-jalan" role="tabpanel" aria-labelledby="pills-data-lingkungan-jalan-tab">...</div>
-                    <div class="tab-pane fade" id="pills-legalisasi" role="tabpanel" aria-labelledby="pills-legalisasi-tab">...</div>
-                </div>
             </div>
         </div>
     </section>
@@ -114,7 +70,7 @@
         // Basemap
         var osm_map = L.tileLayer.provider('OpenStreetMap.Mapnik');
 
-        // Aset Layer
+        // Aset Layer Polygon
         var administratifPolygonLayer = getAdministratifPolygonLayer();
         var dataGeometrikJalanPolygonLayer = getDataGeometrikJalanPolygonLayer();
         var iriPolygonLayer = getIRIPolygonLayer();
@@ -129,6 +85,43 @@
         var segmenLegerPolygonLayer = getSegmenLegerPolygonLayer();
         var segmenPerlengkapanPolygonLayer = getSegmenPerlengkapanPolygonLayer();
         var segmenTolPolygonLayer = getSegmenTolPolygonLayer();
+
+        // Aset Layer Point
+        var lampuLalulintasPointLayer = getLampuLalulintasPointLayer();
+        var manholePointLayer = getManholePointLayer();
+        var gerbangPointLayer = getGerbangPointLayer();
+        var patokHMPointLayer = getPatokHMPointLayer();
+        var patokKMPointLayer = getPatokKMPointLayer();
+        var patokLJPointLayer = getPatokLJPointLayer();
+        var patokRMJPointLayer = getPatokRMJPointLayer();
+        var patokROWPointLayer = getPatokROWPointLayer();
+        var patokPemanduPointLayer = getPatokPemanduPointLayer();
+        var reflektorPointLayer = getReflektorPointLayer();
+        var rambuLalulintasPointLayer = getRambuLalulintasPointLayer();
+        var rambuPenunjukarahPointLayer = getRambuPenunjukarahPointLayer();
+        var rumahKabelPointLayer = getRumahKabelPointLayer();
+        var staTextPointLayer = getStaTextPointLayer();
+        var tiangListrikPointLayer = getTiangListrikPointLayer();
+        var tiangTeleponPointLayer = getTiangTeleponPointLayer();
+        var vmsPointLayer = getVMSPointLayer();
+        
+        // Aset Layer Line
+        var batasDesaLineLayer = getBatasDesaLineLayer();
+        var boxCulvertLineLayer = getBoxCulvertLineLayer();
+        var bptLineLayer = getBPTLineLayer();
+        var bronjongLineLayer = getBronjongLineLayer();
+        var concreteBarrierLineLayer = getConcreteBarrierLineLayer();
+        var gorongGorongLineLayer = getGorongGorongLineLayer();
+        var guardrailLineLayer = getGuardrailLineLayer();
+        var jalanLineLayer = getJalanLineLayer();
+        var listrikBawahtanahLineLayer = getListrikBawahtanahLineLayer();
+        var markaLineLayer = getMarkaLineLayer();
+        var pagarOperasionalLineLayer = getPagarOperasionalLineLayer();
+        var pitaKejutLineLayer = getPitaKejutLineLayer();
+        var riolLineLayer = getRiolLineLayer();
+        var saluranLineLayer = getSaluranLineLayer();
+        var sungaiLineLayer = getSungaiLineLayer();
+        var teleponBawahtanahLineLayer = getTeleponBawahtanahLineLayer();
 
         // Set Layer Options
         var baseGroupMaps = {
@@ -148,6 +141,39 @@
         };
         var overlayMaps = {
             "Jembatan": jembatanPolygonLayer,
+            "Lampu Lalu Lintas": lampuLalulintasPointLayer,
+            "Manhole": manholePointLayer,
+            "Gerbang": gerbangPointLayer,
+            "Patok HM": patokHMPointLayer,
+            "Patok KM": patokKMPointLayer,
+            "Patok LJ": patokLJPointLayer,
+            "Patok RMJ": patokRMJPointLayer,
+            "Patok ROW": patokROWPointLayer,
+            "Patok Pemandu": patokPemanduPointLayer,
+            "Reflektor": reflektorPointLayer,
+            "Rambu Lalu Lintas": rambuLalulintasPointLayer,
+            "Rambu Penunjuk Arah": rambuPenunjukarahPointLayer,
+            "Rumah Kabel": rumahKabelPointLayer,
+            "STA Text": staTextPointLayer,
+            "Tiang Listrik": tiangListrikPointLayer,
+            "Tiang Telepon": tiangTeleponPointLayer,
+            "VMS": vmsPointLayer,
+            "Batas Desa": batasDesaLineLayer,
+            "Box Culvert": boxCulvertLineLayer,
+            "Bangunan Penahan Tanah": bptLineLayer,
+            "Bronjong": bronjongLineLayer,
+            "Concrete Barrier": concreteBarrierLineLayer,
+            "Gorong Gorong": gorongGorongLineLayer,
+            "Guardrail": guardrailLineLayer,
+            "Jalan": jalanLineLayer,
+            "Listrik Bawah Tanah": listrikBawahtanahLineLayer,
+            "Marka": markaLineLayer,
+            "Pagar Operasional": pagarOperasionalLineLayer,
+            "Pita Kejut": pitaKejutLineLayer,
+            "Riol": riolLineLayer,
+            "Saluran": saluranLineLayer,
+            "Sungai": sungaiLineLayer,
+            "Telepon Bawah Tanah": teleponBawahtanahLineLayer,
         }
 
         // Init Map
@@ -156,8 +182,9 @@
             zoom: 16,
             layers: [osm_map, segmenLegerPolygonLayer]
         });
-        var mapLayers = L.control.layers(baseGroupMaps, overlayMaps, {collapsed: false}).addTo(map);
-        $('.leaflet-control-layers-base').prepend('<h5 class="text-center font-weight-bold mb-2">Layer Options</h5><hr>');
+        var mapLayers = L.control.layers(baseGroupMaps, overlayMaps).addTo(map);
+        $('.leaflet-control-layers-base').prepend('<h5 class="text-center font-weight-bold mb-2">Layer Options</h5><div class="leaflet-control-layers-separator"></div>');
+        $('.leaflet-control-layers-overlays').children(':nth-child(18)').after('<div class="leaflet-control-layers-separator"></div>');
 
         // Create Legend
         function createLegend(position, categories, colors) {
