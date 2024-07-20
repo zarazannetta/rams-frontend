@@ -1,5 +1,5 @@
 var url_api = "http://117.53.47.111:91/api/data/aset/";
-var url_icon = "http://localhost:8000/img/map-icons/";
+var url_icon = location.origin + "/img/map-icons/";
 
 function getAdministratifPolygonLayer() {
     return new L.GeoJSON.AJAX(url_api + "administratif_polygon", {
