@@ -31,6 +31,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 // Map Page
 Route::get('/map', [AdminMapController::class, 'index'])->name('admin.map');
+Route::post('/map/download', [AdminMapController::class, 'download'])->name('admin.map.download');
 
 // Input Page
 Route::get('/input/ruas', [InputController::class, 'ruas'])->name('input.ruas');

@@ -18,6 +18,7 @@ function getAdministratifPolygonLayer() {
                     <div class="popup-body">
                         <div class="mb-1"><span class="font-weight-bold">Provinsi</span>: ${layer.feature.properties.nama_prov}</div>
                         <div class="mb-1"><span class="font-weight-bold">Kabupaten/Kota</span>: ${layer.feature.properties.nama_kab}</div>
+                        <div class="mb-1"><span class="font-weight-bold">Kecamatan</span>: ${layer.feature.properties.nama_kec}</div>
                         <div class="mb-1"><span class="font-weight-bold">Desa</span>: ${layer.feature.properties.nama_desa}</div>
                     </div>
                 </div>`;

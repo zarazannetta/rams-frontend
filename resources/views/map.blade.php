@@ -30,9 +30,17 @@
             <div class="card-header">
                 <h3 class="card-title">Data Leger</h3>
                 <div class="card-tools">
-                    <a href="#" class="btn btn-info btn-sm">
-                        Download
-                    </a>
+                    <form action="{{ route('admin.map.download') }}" method="POST">
+                        @csrf
+                        <input type="hidden" id="kode_leger_form" name="kode_leger" value="">
+                        <input type="hidden" id="kode_administratif_form" name="kode_administratif" value="">
+                        <input type="hidden" id="nomor_ruas_form" name="nomor_ruas" value="">
+                        <input type="hidden" id="segmen_awal_form" name="segmen_awal" value="">
+                        <input type="hidden" id="segmen_akhir_form" name="segmen_akhir" value="">
+                        <button type="submit" class="btn btn-info btn-sm">
+                            Download
+                        </button>
+                    </form>
                 </div>
             </div>
             <div class="card-body">
@@ -40,23 +48,23 @@
                 <table class="table w-50 mx-auto mb-4">
                     <tr>
                         <td>Nomor Kartu Leger Jalan</td>
-                        <td class="text-right">T0011</td>
+                        <td id="kode_leger_view" class="text-right">-</td>
                     </tr>
                     <tr>
                         <td>Nomor Kode dan Nama</td>
-                        <td class="text-right">[17] Provinsi: Lampung, [02] Kabupaten/Kota: Lampung Tengah, [14] Kecamatan: Bumi Ratu Nuban, [03] Desa: Suka Jadi</td>
+                        <td id="kode_administratif_view" class="text-right">-</td>
                     </tr>
                     <tr>
                         <td>Nomor Ruas Jalan / Seksi</td>
-                        <td class="text-right">Bakauheni - Terbanggi Besar Seksi 4 (Tegineneng - Terbanggi Besar)</td>
+                        <td id="nomor_ruas_view" class="text-right">-</td>
                     </tr>
                     <tr>
                         <td>Titik Awal Segmen Jalan</td>
-                        <td class="text-right">KM: 108+982, X: 522825.146, Y: 9430234.102, Z: 77.734, Deskripsi: 400 meter setelah Interchange Tegineneng</td>
+                        <td id="segmen_awal_view" class="text-right">-</td>
                     </tr>
                     <tr>
                         <td>Titik Akhir Segmen Jalan</td>
-                        <td class="text-right">KM: 140+892, X: 525626.860, Y: 9460898.902, Z: 39.063, Deskripsi: 9 meter setelah Box Culvert KM 140+883</td>
+                        <td id="segmen_akhir_view" class="text-right">-</td>
                     </tr>
                 </table>
             </div>
@@ -65,6 +73,7 @@
 @endsection
 
 @push('scripts')
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script> -->
     <script src="{{ asset('js/map-layer.js') }}"></script>
     <script>
         // Basemap
@@ -277,5 +286,91 @@
             legendLapisPondasiBawah.addTo(map);
         }
         legendSegmenLeger.addTo(map);
+
+        // Click Event
+        segmenLegerPolygonLayer.on('click', function (e) {
+            var kodeLeger = e.layer.feature.properties.id_leger;
+            $.ajax({
+                url: 'http://117.53.47.111:91/api/leger/get-data/' + kodeLeger,
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + '{{ Session::get("token") }}'
+                },
+                success: function(response) {
+                    if (response.data_jalan_identifikasi_id) {
+                        var kode_leger = response.kode_leger;
+                        var kode_administratif = `
+                            [${response.data_jalan_identifikasi.kode_provinsi.kode}] Provinsi: ${response.data_jalan_identifikasi.kode_provinsi.nama},
+                            [${response.data_jalan_identifikasi.kode_kabkot.kode}] Kabupaten/Kota: ${response.data_jalan_identifikasi.kode_kabkot.nama},
+                            [${response.data_jalan_identifikasi.kode_kecamatan.kode}] Kecamatan: ${response.data_jalan_identifikasi.kode_kecamatan.nama},
+                            [${response.data_jalan_identifikasi.kode_desakel.kode}] Desa: ${response.data_jalan_identifikasi.kode_desakel.nama}
+                        `;
+                        var nomor_ruas = response.data_jalan_identifikasi.deskripsi_seksi;
+                        var segmen_awal = `
+                            X: ${response.data_jalan_identifikasi.titik_awal_segmen_x},
+                            Y: ${response.data_jalan_identifikasi.titik_awal_segmen_y},
+                            Z: ${response.data_jalan_identifikasi.titik_awal_segmen_z},
+                            Deskripsi: ${response.data_jalan_identifikasi.titik_awal_segmen_deskripsi}
+                        `;
+                        var segmen_akhir = `
+                            X: ${response.data_jalan_identifikasi.titik_akhir_segmen_x},
+                            Y: ${response.data_jalan_identifikasi.titik_akhir_segmen_y},
+                            Z: ${response.data_jalan_identifikasi.titik_akhir_segmen_z},
+                            Deskripsi: ${response.data_jalan_identifikasi.titik_akhir_segmen_deskripsi}
+                        `;
+
+                        // Set View
+                        $('#kode_leger_view').text(kode_leger);
+                        $('#kode_administratif_view').text(kode_administratif);
+                        $('#nomor_ruas_view').text(nomor_ruas);
+                        $('#segmen_awal_view').text(segmen_awal);
+                        $('#segmen_akhir_view').text(segmen_akhir);
+
+                        // Set Form Value
+                        $('#kode_leger_form').val(kode_leger);
+                        $('#kode_administratif_form').val(kode_administratif);
+                        $('#nomor_ruas_form').val(nomor_ruas);
+                        $('#segmen_awal_form').val(segmen_awal);
+                        $('#segmen_akhir_form').val(segmen_akhir);
+                    } else {
+                        // Set View
+                        $('#kode_leger_view').text('-');
+                        $('#kode_administratif_view').text('-');
+                        $('#nomor_ruas_view').text('-');
+                        $('#segmen_awal_view').text('-');
+                        $('#segmen_akhir_view').text('-');
+
+                        // Set Form Value
+                        $('#kode_leger_form').val('-');
+                        $('#kode_administratif_form').val('-');
+                        $('#nomor_ruas_form').val('-');
+                        $('#segmen_awal_form').val('-');
+                        $('#segmen_akhir_form').val('-');
+                    }
+                },
+                error: function(error) {
+                    console.error('Error fetching data:', error);
+                }
+            });
+
+            // // Get the clicked segment geometry
+            // var segmenGeometry = e.layer.feature.geometry;
+
+            // // Iterate through each feature in administratifPolygonLayer
+            // administratifPolygonLayer.eachLayer(function (layer) {
+            //     var administratifGeometry = layer.feature.geometry;
+
+            //     // Check if the segment intersects with the administratif layer
+            //     var intersection = turf.intersect(segmenGeometry, administratifGeometry);
+            //     if (intersection) {
+            //         // Do something with the intersection information
+            //         console.log('Intersection found:', intersection);
+            //         // Example: Display the name of the intersected administrative area
+            //         var adminName = layer.feature.properties.name;
+            //         alert('This segment intersects with: ' + adminName);
+            //     }
+            // });
+        });
     </script>
 @endpush
