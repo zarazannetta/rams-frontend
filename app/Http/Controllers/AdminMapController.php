@@ -14,7 +14,7 @@ class AdminMapController extends Controller
 
     public function download(Request $request)
     {
-        $mpdf = new Mpdf();
+        $mpdf = new Mpdf(['tempDir' => __DIR__ . '/../../../public/temp/']);
         $mpdf->WriteHTML(view('download.index', ['data' => $request->all()]));
         $mpdf->Output('download-data-rams.pdf', 'D');
     }
