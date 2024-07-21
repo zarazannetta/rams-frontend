@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
@@ -17,8 +18,15 @@ class DashboardController extends Controller
         });
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('dashboard');
+        $url_dashboard = "http://117.53.47.111:91/api/dashboard";
+        $response_dashboard = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer ' . $request->session()->get('token')
+        ])->get($url_dashboard);
+        $dashboard = $response_dashboard->json();
+
+        return view('dashboard', compact('dashboard'));
     }
 }

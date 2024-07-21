@@ -22,49 +22,49 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>1</h3>
+                        <h3>{{ $dashboard['total_ruas'] }}</h3>
                         <p class="font-weight-bold">Total Ruas Jalan Tol</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
                 </div>
             </div>
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>2</h3>
+                        <h3>{{ $dashboard['jumlah_user'] }}</h3>
                         <p class="font-weight-bold">Jumlah User</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
                 </div>
             </div>
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>1</h3>
+                        <h3>{{ $dashboard['jumlah_ruas_user'] }}</h3>
                         <p class="font-weight-bold">Ruas Jalan Tol Anda</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
                 </div>
             </div>
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>10</h3>
+                        <h3>{{ $dashboard['jumlah_leger_user'] }}</h3>
                         <p class="font-weight-bold">Data Leger Anda</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
                 </div>
             </div>
         </div>
@@ -112,7 +112,7 @@
                 labels: ['Golongan I', 'Golongan II', 'Golongan III', 'Golongan IV', 'Golongan V'],
                 datasets: [{
                     label: 'Jumlah',
-                    data: [26454, 6736, 1674, 65, 159],
+                    data: [{{ $dashboard['lhr_gol_i'] }}, {{ $dashboard['lhr_gol_ii'] }}, {{ $dashboard['lhr_gol_iii'] }}, {{ $dashboard['lhr_gol_iv'] }}, {{ $dashboard['lhr_gol_v'] }}],
                     backgroundColor: [
                         'rgb(54, 162, 235)',
                         'rgb(75, 192, 192)',
@@ -136,13 +136,12 @@
         new Chart(ctx2, {
             type: 'doughnut',
             data: {
-                labels: ['0-2 (Excellent)', '2-4 (Good)', '4-6 (Fair)', '6-8 (Poor)', '8-10 (Very Poor)'],
+                labels: ['< 4 (Baik)', '4-8 (Sedang)', '8-12 (Rusak Ringan)', '> 12 (Rusak Berat)'],
                 datasets: [{
                     label: 'Nilai IRI',
-                    data: [95, 1100, 230, 14, 0],
+                    data: [{{ $dashboard['iri_baik'] }}, {{ $dashboard['iri_sedang'] }}, {{ $dashboard['iri_rusak_ringan'] }}, {{ $dashboard['iri_rusak_berat'] }},],
                     backgroundColor: [
                         'rgb(54, 162, 235)',
-                        'rgb(75, 192, 192)',
                         'rgb(255, 205, 86)',
                         'rgb(255, 159, 64)',
                         'rgb(255, 99, 132)',
