@@ -15,7 +15,7 @@
         <div class="login-logo">
             <a class="font-weight-bold" href="{{ route('index') }}">
                 <img src="{{ asset('img/brand.png') }}" class="img-circle elevation-3 bg-black" style="height: 75px; opacity: .8">
-                <div class="brand-text">RAMS</div>
+                <div class="brand-text">RAMS_Arung01</div>
             </a>
         </div>
         <div class="card">

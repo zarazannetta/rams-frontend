@@ -2,7 +2,7 @@
     {{-- Brand --}}
     <a href="{{ route('dashboard') }}" class="brand-link">
         <img src="{{ asset('img/brand.png') }}" class="brand-image img-circle elevation-3 bg-white" style="opacity: .8">
-        <span class="brand-text font-weight-bold">RAMS</span>
+        <span class="brand-text font-weight-bold">RAMS_Arung01</span>
     </a>
 
     <div class="sidebar">
