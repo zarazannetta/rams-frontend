@@ -67,6 +67,50 @@
                         <td id="segmen_akhir_view" class="text-right">-</td>
                     </tr>
                 </table>
+                <!-- <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item mr-1" role="presentation">
+                        <button class="nav-link active" id="pills-data-teknik-1-tab" data-toggle="pill" data-target="#pills-data-teknik-1" type="button" role="tab" aria-controls="pills-data-teknik-1" aria-selected="true">Data Teknik 1</button>
+                    </li>
+                    <li class="nav-item mr-1" role="presentation">
+                        <button class="nav-link" id="pills-data-teknik-2-tab" data-toggle="pill" data-target="#pills-data-teknik-2" type="button" role="tab" aria-controls="pills-data-teknik-2" aria-selected="false">Data Teknik 2</button>
+                    </li>
+                    <li class="nav-item mr-1" role="presentation">
+                        <button class="nav-link" id="pills-data-teknik-3-tab" data-toggle="pill" data-target="#pills-data-teknik-3" type="button" role="tab" aria-controls="pills-data-teknik-3" aria-selected="false">Data Teknik 3</button>
+                    </li>
+                    <li class="nav-item mr-1" role="presentation">
+                        <button class="nav-link" id="pills-data-teknik-4-tab" data-toggle="pill" data-target="#pills-data-teknik-4" type="button" role="tab" aria-controls="pills-data-teknik-4" aria-selected="false">Data Teknik 4</button>
+                    </li>
+                    <li class="nav-item mr-1" role="presentation">
+                        <button class="nav-link" id="pills-data-teknik-5-tab" data-toggle="pill" data-target="#pills-data-teknik-5" type="button" role="tab" aria-controls="pills-data-teknik-5" aria-selected="false">Data Teknik 5</button>
+                    </li>
+                    <li class="nav-item mr-1" role="presentation">
+                        <button class="nav-link" id="pills-data-lainnya-tab" data-toggle="pill" data-target="#pills-data-lainnya" type="button" role="tab" aria-controls="pills-data-lainnya" aria-selected="false">Data Lainnya</button>
+                    </li>
+                    <li class="nav-item mr-1" role="presentation">
+                        <button class="nav-link" id="pills-lintasan-harian-tab" data-toggle="pill" data-target="#pills-lintasan-harian" type="button" role="tab" aria-controls="pills-lintasan-harian" aria-selected="false">Lintasan Harian</button>
+                    </li>
+                    <li class="nav-item mr-1" role="presentation">
+                        <button class="nav-link" id="pills-data-geometrik-tab" data-toggle="pill" data-target="#pills-data-geometrik" type="button" role="tab" aria-controls="pills-data-geometrik" aria-selected="false">Data Geometrik</button>
+                    </li>
+                    <li class="nav-item mr-1" role="presentation">
+                        <button class="nav-link" id="pills-data-lingkungan-jalan-tab" data-toggle="pill" data-target="#pills-data-lingkungan-jalan" type="button" role="tab" aria-controls="pills-data-lingkungan-jalan" aria-selected="false">Data Lingkungan Jalan</button>
+                    </li>
+                    <li class="nav-item mr-1" role="presentation">
+                        <button class="nav-link" id="pills-legalisasi-tab" data-toggle="pill" data-target="#pills-legalisasi" type="button" role="tab" aria-controls="pills-legalisasi" aria-selected="false">Legalisasi</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-data-teknik-1" role="tabpanel" aria-labelledby="pills-data-teknik-1-tab">...</div>
+                    <div class="tab-pane fade" id="pills-data-teknik-2" role="tabpanel" aria-labelledby="pills-data-teknik-2-tab">...</div>
+                    <div class="tab-pane fade" id="pills-data-teknik-3" role="tabpanel" aria-labelledby="pills-data-teknik-3-tab">...</div>
+                    <div class="tab-pane fade" id="pills-data-teknik-4" role="tabpanel" aria-labelledby="pills-data-teknik-4-tab">...</div>
+                    <div class="tab-pane fade" id="pills-data-teknik-5" role="tabpanel" aria-labelledby="pills-data-teknik-5-tab">...</div>
+                    <div class="tab-pane fade" id="pills-data-lainnya" role="tabpanel" aria-labelledby="pills-data-lainnya-tab">...</div>
+                    <div class="tab-pane fade" id="pills-lintasan-harian" role="tabpanel" aria-labelledby="pills-lintasan-harian-tab">...</div>
+                    <div class="tab-pane fade" id="pills-data-geometrik" role="tabpanel" aria-labelledby="pills-data-geometrik-tab">...</div>
+                    <div class="tab-pane fade" id="pills-data-lingkungan-jalan" role="tabpanel" aria-labelledby="pills-data-lingkungan-jalan-tab">...</div>
+                    <div class="tab-pane fade" id="pills-legalisasi" role="tabpanel" aria-labelledby="pills-legalisasi-tab">...</div>
+                </div> -->
             </div>
         </div>
     </section>
