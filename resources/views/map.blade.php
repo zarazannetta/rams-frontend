@@ -18,6 +18,27 @@
     </section>
 
     <section class="content">
+        <!-- Distance Filter Form -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="card-title">Filter Assets by Distance</h3>
+            </div>
+            <div class="card-body">
+                <form id="distance-filter-form" class="form-inline justify-content-center">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="start-km" class="sr-only">Start KM</label>
+                        <input type="number" class="form-control" id="start-km" placeholder="Start KM">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="end-km" class="sr-only">End KM</label>
+                        <input type="number" class="form-control" id="end-km" placeholder="End KM">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Filter</button>
+                </form>
+            </div>
+        </div>
+
+    <section class="content">
         <div class="card mb-4">
             <div class="card-header">
                 <h3 class="card-title">Data Spasial</h3>
@@ -238,6 +259,8 @@
         var mapLayers = L.control.layers(baseGroupMaps, overlayMaps).addTo(map);
         $('.leaflet-control-layers-base').prepend('<h5 class="text-center font-weight-bold mb-2">Layer Options</h5><div class="leaflet-control-layers-separator"></div>');
         $('.leaflet-control-layers-overlays').children(':nth-child(18)').after('<div class="leaflet-control-layers-separator"></div>');
+        
+        
 
         // Create Legend
         function createLegend(position, categories, colors) {
