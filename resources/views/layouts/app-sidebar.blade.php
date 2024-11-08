@@ -32,6 +32,11 @@
                         <p>Map</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.leger') }}" class="nav-link {{ Request::is('leger') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-road"></i>
+                        <p>Leger</p>
+                    </a>
                 <li class="nav-item has-treeview {{ Request::is('input*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ Request::is('input*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-upload"></i>

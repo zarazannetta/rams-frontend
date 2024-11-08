@@ -33,6 +33,11 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/map', [AdminMapController::class, 'index'])->name('admin.map');
 Route::post('/map/download', [AdminMapController::class, 'download'])->name('admin.map.download');
 Route::post('/map/jalan_utama', [AdminMapController::class, 'jalanUtama'])->name('admin.map.jalan_utama');
+Route::get('/map/jalan_utama_belakang', [AdminMapController::class, 'jalanUtamaBelakang'])->name('admin.map.jalan_utama_belakang');
+Route::post('/map/jalan_utama_all', [AdminMapController::class, 'jalanUtamaAll'])->name('admin.map.jalan_utama_all');
+
+//Leger Page
+Route::get('/leger', [AdminMapController::class, 'leger'])->name('admin.leger');
 
 // Input Page
 Route::get('/input/ruas', [InputController::class, 'ruas'])->name('input.ruas');
