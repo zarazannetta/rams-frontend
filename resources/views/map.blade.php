@@ -23,16 +23,16 @@
         <h3 class="card-title mb-0">Filter Assets by Distance</h3>
       </div>
       <div class="card-body d-flex justify-content-center">
-        <div class="d-flex flex-wrap align-items-center justify-content-center gap-3 w-100" style="max-width: 800px;">
-          <div class="text-center">
-            <label for="start-km" class="font-weight-bold">Start KM:</label>
-            <select id="start-km" class="form-select select2 custom-select-border" style="width: 150px;"></select>
+        <div class="d-flex flex-wrap align-items-center justify-content-center gap-3 w-100">
+          <div class="form-group mx-3">
+            <label for="start-km" class="d-block">Start KM:</label>
+            <select class="form-control select2" id="start-km" name="start-km" style="width:150px"></select>
           </div>
-          <div class="text-center">
-            <label for="end-km" class="font-weight-bold">End KM:</label>
-            <select id="end-km" class="form-select select2 custom-select-border" style="width: 150px;"></select>
+          <div class="form-group mx-3">
+            <label for="end-km" class="d-block">End KM:</label>
+            <select class="form-control select2" id="end-km" name="end-km" style="width:150px"></select>
           </div>
-          <div class="mb-0 text-center">
+          <div class="text-center mx-3">
             <button id="apply-filter-button" class="btn btn-primary">Apply Filter</button>
           </div>
         </div>
@@ -67,17 +67,14 @@
   @endpush
 
   @push('scripts')
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script> -->
-    <!-- Select2 CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.min.css"
-      rel="stylesheet" />
-
-    <!-- Select2 JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
-
     <script src="{{ asset('js/map-layer.js') }}"></script>
     <script>
+      $(function () {
+          $('.select2').select2({
+              theme: 'bootstrap4'
+          });
+      });
+      
       const baseGroupMapsConfig = [{
           name: "Ruwasja",
           layer: "getRuwasjaPolygonLayer",
@@ -425,7 +422,7 @@
         });
 
         // Fetch data untuk Start KM dan End KM
-        fetch("http://127.0.0.1:8000/api/get-km-options")
+        fetch("http://117.53.47.111:91/api/get-km-options")
           .then((response) => response.json())
           .then((data) => {
             const options = data.data; // Asumsi API mengembalikan { "data": [...] }
