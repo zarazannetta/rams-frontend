@@ -1,5 +1,5 @@
-// var url_api = "http://117.53.47.111:91/api/data/aset/";
-let url_api = "http://localhost:8000/api/data/aset/";
+var url_api = "http://117.53.47.111:91/api/data/aset/";
+// let url_api = "http://localhost:8000/api/data/aset/";
 var url_icon = location.origin + "/img/map-icons/";
 
 
