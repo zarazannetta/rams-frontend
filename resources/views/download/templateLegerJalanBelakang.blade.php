@@ -132,35 +132,27 @@
         </tr>
         <tr>
             <td colspan = "75"
-                style="text-align: center; font-size:20px;  border: 0.1px solid black; padding-top: 150px; padding-bottom: 150px">
-                GAMBAR PETA</td>
+                style="text-align: center; font-size:20px;  padding-top: 15px; padding-bottom: 15px">
+                <img src="http://localhost:8000/img/leger/jalan-utama/HORIZONTAL_M001_20241113_075608.png" alt="" style="max-height: 360px;">
+            </td>
         </tr>
-
-        @for ($i = 0; $i < 9; $i++)
+        
             <tr>
-                @for ($j = 0; $j < 74; $j++)
                     <td style="text-align: center; border: 0.1px solid black; padding-top: 10px; padding-bottom: 10px">
                     </td>
-                @endfor
-            </tr>
-        @endfor
+                    <img src="http://localhost:8000/img/leger/jalan-utama/VERTIKAL_M001_20241113_075608.png" alt="">
+                </tr>
+                
+                <tr>
+                    <td style="text-align: center; border: 0.1px solid black; padding-top: 30px; padding-bottom: 30px">
+                    </td>
+                </tr>
 
-        <tr>
-            @for ($j = 0; $j < 74; $j++)
-                <td style="text-align: center; border: 0.1px solid black; padding-top: 30px; padding-bottom: 30px">
-                </td>
-            @endfor
-        </tr>
-
-        @for ($i = 0; $i < 9; $i++)
-            <tr>
-                @for ($j = 0; $j < 74; $j++)
+                <tr>
                     <td style="text-align: center; border: 0.1px solid black; padding-top: 10px; padding-bottom: 10px">
                     </td>
-                @endfor
+                    <img src="http://localhost:8000/img/leger/jalan-utama/PENAMPANG_M001_20241113_075608.png" alt="">
             </tr>
-        @endfor
-
         <tr>
             <td colspan = "75" style="text-align: center; font-size:20px">LEGEND</td>
         </tr>

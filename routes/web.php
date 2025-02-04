@@ -6,6 +6,7 @@ use App\Http\Controllers\InputController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminMapController;
 use App\Http\Controllers\GuestMapController;
+use App\Http\Controllers\LegerJalanUtamaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,12 +33,17 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 // Map Page
 Route::get('/map', [AdminMapController::class, 'index'])->name('admin.map');
 Route::post('/map/download', [AdminMapController::class, 'download'])->name('admin.map.download');
-Route::post('/map/jalan_utama', [AdminMapController::class, 'jalanUtama'])->name('admin.map.jalan_utama');
-Route::get('/map/jalan_utama_belakang', [AdminMapController::class, 'jalanUtamaBelakang'])->name('admin.map.jalan_utama_belakang');
+// Route::get('/map/jalan_utama_belakang', [AdminMapController::class, 'jalanUtamaBelakang'])->name('admin.map.jalan_utama_belakang');
 Route::post('/map/jalan_utama_all', [AdminMapController::class, 'jalanUtamaAll'])->name('admin.map.jalan_utama_all');
 
-//Leger Page
-Route::get('/leger', [AdminMapController::class, 'leger'])->name('admin.leger');
+//Leger Jalan Utama Page
+Route::get('/leger/view', [LegerJalanUtamaController::class, 'legerViewSelect'])->name('admin.leger.jalanUtama.view.select');
+Route::get('/leger/edit', [LegerJalanUtamaController::class, 'legerEditSelect'])->name('admin.leger.jalanUtama.edit.select');
+Route::post('/leger/view/detail', [LegerJalanUtamaController::class, 'legerViewDetail'])->name('admin.leger.jalanUtama.view.detail');
+Route::post('/leger/edit/detail', [LegerJalanUtamaController::class, 'legerEditDetail'])->name('admin.leger.jalanUtama.edit.detail');
+Route::post('/leger/generate', [LegerJalanUtamaController::class, 'legerGenerate'])->name('admin.leger.jalanUtama.generate');
+Route::post('/leger/print', [LegerJalanUtamaController::class, 'legerPrint'])->name('admin.leger.jalanUtama.print');
+
 
 // Input Page
 Route::get('/input/ruas', [InputController::class, 'ruas'])->name('input.ruas');

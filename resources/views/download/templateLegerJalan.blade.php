@@ -131,22 +131,70 @@
         <tr>
             <td>NOMOR KODE DAN NAMA</td>
             <td>:</td>
-            <td>@if (isset($data['administratif'][0]['kode_prov'])) {{ $data['administratif'][0]['kode_prov'] }} @else --- @endif</td>
+            <td>
+                @if (isset($data['administratif'][0]['kode_prov']))
+                    {{ $data['administratif'][0]['kode_prov'] }}
+                @else
+                    ---
+                @endif
+            </td>
             <td>PROVINSI</td>
             <td>:</td>
-            <td>@if (isset($data['administratif'][0]['nama_prov'])) {{ $data['administratif'][0]['nama_prov'] }} @else --- @endif</td>
-            <td>@if (isset($data['administratif'][0]['kode_kab'])) {{ $data['administratif'][0]['kode_kab'] }} @else --- @endif</td>
+            <td>
+                @if (isset($data['administratif'][0]['nama_prov']))
+                    {{ $data['administratif'][0]['nama_prov'] }}
+                @else
+                    ---
+                @endif
+            </td>
+            <td>
+                @if (isset($data['administratif'][0]['kode_kab']))
+                    {{ $data['administratif'][0]['kode_kab'] }}
+                @else
+                    ---
+                @endif
+            </td>
             <td>KABUPATEN/KOTA</td>
             <td>:</td>
-            <td>@if (isset($data['administratif'][0]['nama_kab'])) {{ $data['administratif'][0]['nama_kab'] }} @else --- @endif</td>
-            <td>@if (isset($data['administratif'][0]['kode_kec'])) {{ $data['administratif'][0]['kode_kec'] }} @else --- @endif</td>
+            <td>
+                @if (isset($data['administratif'][0]['nama_kab']))
+                    {{ $data['administratif'][0]['nama_kab'] }}
+                @else
+                    ---
+                @endif
+            </td>
+            <td>
+                @if (isset($data['administratif'][0]['kode_kec']))
+                    {{ $data['administratif'][0]['kode_kec'] }}
+                @else
+                    ---
+                @endif
+            </td>
             <td>KECAMATAN</td>
             <td>:</td>
-            <td>@if (isset($data['administratif'][0]['nama_kec'])) {{ $data['administratif'][0]['nama_kec'] }} @else --- @endif</td>
-            <td>@if (isset($data['administratif'][0]['kode_desa'])) {{ $data['administratif'][0]['kode_desa'] }} @else --- @endif</td>
+            <td>
+                @if (isset($data['administratif'][0]['nama_kec']))
+                    {{ $data['administratif'][0]['nama_kec'] }}
+                @else
+                    ---
+                @endif
+            </td>
+            <td>
+                @if (isset($data['administratif'][0]['kode_desa']))
+                    {{ $data['administratif'][0]['kode_desa'] }}
+                @else
+                    ---
+                @endif
+            </td>
             <td>DESA/KELURAHAN</td>
             <td>:</td>
-            <td>@if (isset($data['administratif'][0]['nama_desa'])) {{ $data['administratif'][0]['nama_desa'] }} @else --- @endif</td>
+            <td>
+                @if (isset($data['administratif'][0]['nama_desa']))
+                    {{ $data['administratif'][0]['nama_desa'] }}
+                @else
+                    ---
+                @endif
+            </td>
 
         </tr>
         <tr>
@@ -165,8 +213,15 @@
             <td>LOKASI / KOTA</td>
             <td>:</td>
             <td>---</td>
-            <td>@if (isset($data['titik_segmen']['titik_awal_segmen']['km']) && isset($data['titik_segmen']['titik_akhir_segmen']['km']))
-                 KM {{ $data['titik_segmen']['titik_awal_segmen']['km'] }} S/D KM {{ $data['titik_segmen']['titik_akhir_segmen']['km'] }} @else --- @endif</td>
+            <td>
+                @if (isset($data['data_jalan_identifikasi']['titik_awal_segmen_km']) &&
+                        isset($data['data_jalan_identifikasi']['titik_akhir_segmen_km']))
+                    KM {{ $data['data_jalan_identifikasi']['titik_awal_segmen_km'] }} S/D KM
+                    {{ $data['data_jalan_identifikasi']['titik_akhir_segmen_km'] }}
+                @else
+                    ---
+                @endif
+            </td>
         </tr>
         <tr>
             <td>TITIK IKAT LEGER JALAN</td>
@@ -190,16 +245,40 @@
             <td>TITIK IKAT PATOK KM</td>
             <td>:</td>
             <td>---</td>
-            <td>@if (isset($data['titik_segmen']['titik_ikat_patok_km']['km'])) KM {{ $data['titik_segmen']['titik_ikat_patok_km']['km'] }} @else --- @endif</td>
+            <td>
+                @if (isset($data['data_jalan_identifikasi']['titik_ikat_patok_km']))
+                    KM {{ $data['data_jalan_identifikasi']['titik_ikat_patok_km'] }}
+                @else
+                    ---
+                @endif
+            </td>
             <td>X</td>
             <td>:</td>
-            <td>@if (isset($data['titik_segmen']['titik_ikat_patok_km']['x'])) {{ $data['titik_segmen']['titik_ikat_patok_km']['x'] }} @else --- @endif</td>
+            <td>
+                @if (isset($data['data_jalan_identifikasi']['titik_ikat_patok_x']))
+                    {{ $data['data_jalan_identifikasi']['titik_ikat_patok_x'] }}
+                @else
+                    ---
+                @endif
+            </td>
             <td>Y</td>
             <td>:</td>
-            <td>@if (isset($data['titik_segmen']['titik_ikat_patok_km']['y'])) {{ $data['titik_segmen']['titik_ikat_patok_km']['y'] }} @else --- @endif</td>
+            <td>
+                @if (isset($data['data_jalan_identifikasi']['titik_ikat_patok_y']))
+                    {{ $data['data_jalan_identifikasi']['titik_ikat_patok_y'] }}
+                @else
+                    ---
+                @endif
+            </td>
             <td>Z</td>
             <td>:</td>
-            <td>@if (isset($data['titik_segmen']['titik_ikat_patok_km']['z'])) {{ $data['titik_segmen']['titik_ikat_patok_km']['z'] }} @else --- @endif</td>
+            <td>
+                @if (isset($data['data_jalan_identifikasi']['titik_ikat_patok_z']))
+                    {{ $data['data_jalan_identifikasi']['titik_ikat_patok_z'] }}
+                @else
+                    ---
+                @endif
+            </td>
             <td>DESKRIPSI</td>
             <td>:</td>
             <td>---</td>
@@ -208,7 +287,13 @@
             <td>TITIK AWAL SEGMEN RUAS JALAN</td>
             <td>:</td>
             <td>---</td>
-            <td>@if (isset($data['titik_segmen']['titik_awal_segmen']['km'])) KM {{ $data['titik_segmen']['titik_awal_segmen']['km'] }} @else --- @endif</td>
+            <td>
+                @if (isset($data['data_jalan_identifikasi']['titik_awal_segmen_km']))
+                    KM {{ $data['data_jalan_identifikasi']['titik_awal_segmen_km'] }}
+                @else
+                    ---
+                @endif
+            </td>
             <td>X</td>
             <td>:</td>
             <td>---</td>
@@ -226,7 +311,13 @@
             <td>TITIK AKHIR SEGMEN RUAS JALAN</td>
             <td>:</td>
             <td>---</td>
-            <td>@if (isset($data['titik_segmen']['titik_akhir_segmen']['km'])) KM {{ $data['titik_segmen']['titik_akhir_segmen']['km'] }} @else --- @endif</td>
+            <td>
+                @if (isset($data['data_jalan_identifikasi']['titik_akhir_segmen_km']))
+                    KM {{ $data['data_jalan_identifikasi']['titik_akhir_segmen_km'] }}
+                @else
+                    ---
+                @endif
+            </td>
             <td>X</td>
             <td>:</td>
             <td>---</td>
@@ -261,8 +352,20 @@
         </tr>
         <tr>
             <td>a. LAHAN RUMIJA</td>
-            <td>@if (isset($data['luas_rumija']['luas'])) {{ $data['luas_rumija']['luas'] }} @else --- @endif</td>
-            <td> HASIL LAPANGAN </td>
+            <td>
+                @if (isset($data['data_jalan_teknik1']["lahan_rumija"]['luas']))
+                    {{ $data['data_jalan_teknik1']["lahan_rumija"]['luas'] }}
+                @else
+                    ---
+                @endif
+            </td>
+            <td>
+                @if (isset($data['data_jalan_teknik1']["lahan_rumija"]['data_perolehan']))
+                    {{ $data['data_jalan_teknik1']["lahan_rumija"]['data_perolehan'] }}
+                @else
+                    ---
+                @endif
+            </td>
             <td>---</td>
             <td>---</td>
             <td>---</td>
@@ -272,8 +375,20 @@
         </tr>
         <tr>
             <td>b. BADAN JALAN</td>
-            <td>@if (isset($data['luas_badan_jalan']['luas'])) {{ $data['luas_badan_jalan']['luas'] }} @else --- @endif</td>
-            <td> HASIL LAPANGAN </td>
+            <td>
+                @if (isset($data['data_jalan_teknik1']["badan_jalan"]['luas']))
+                    {{ $data['data_jalan_teknik1']["badan_jalan"]['luas'] }}
+                @else
+                    ---
+                @endif
+            </td>
+            <td>
+                @if (isset($data['data_jalan_teknik1']["badan_jalan"]['data_perolehan']))
+                    {{ $data['data_jalan_teknik1']["badan_jalan"]['data_perolehan'] }}
+                @else
+                    ---
+                @endif
+            </td>
             <td>---</td>
             <td>---</td>
             <td>---</td>
@@ -283,8 +398,20 @@
         </tr>
         <tr>
             <td>c. BAHU JALAN</td>
-            <td>@if (isset($data['luas_bahu_jalan']['luas'])) {{ $data['luas_bahu_jalan']['luas'] }} @else --- @endif</td>
-            <td> HASIL LAPANGAN </td>
+            <td>
+                @if (isset($data['data_jalan_teknik1']["bahu_jalan"]['luas']))
+                    {{ $data['data_jalan_teknik1']["bahu_jalan"]['luas'] }}
+                @else
+                    ---
+                @endif
+            </td>
+            <td>
+                @if (isset($data['data_jalan_teknik1']["bahu_jalan"]['data_perolehan']))
+                    {{ $data['data_jalan_teknik1']["bahu_jalan"]['data_perolehan'] }}
+                @else
+                    ---
+                @endif
+            </td>
             <td>---</td>
             <td>---</td>
             <td>---</td>
@@ -369,14 +496,62 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">TEBAL (M)</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kiri']['lajur_1'][0]['tebal'])) {{ $data['badan_jalan']['lapis_permukaan']['kiri']['lajur_1'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kiri']['lajur_2'][0]['tebal'])) {{ $data['badan_jalan']['lapis_permukaan']['kiri']['lajur_2'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kiri']['lajur_3'][0]['tebal'])) {{ $data['badan_jalan']['lapis_permukaan']['kiri']['lajur_3'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kiri']['lajur_4'][0]['tebal'])) {{ $data['badan_jalan']['lapis_permukaan']['kiri']['lajur_4'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kanan']['lajur_4'][0]['tebal'])) {{ $data['badan_jalan']['lapis_permukaan']['kanan']['lajur_4'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kanan']['lajur_3'][0]['tebal'])) {{ $data['badan_jalan']['lapis_permukaan']['kanan']['lajur_3'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kanan']['lajur_2'][0]['tebal'])) {{ $data['badan_jalan']['lapis_permukaan']['kanan']['lajur_2'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kanan']['lajur_1'][0]['tebal'])) {{ $data['badan_jalan']['lapis_permukaan']['kanan']['lajur_1'][0]['tebal'] }} @else --- @endif</td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ki_lajur1']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ki_lajur1'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ki_lajur2']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ki_lajur2'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ki_lajur3']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ki_lajur3'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ki_lajur4']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ki_lajur4'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ka_lajur4']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ka_lajur4'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ka_lajur3']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ka_lajur3'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ka_lajur2']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ka_lajur2'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ka_lajur1']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["tebal"]['nilai_ka_lajur1'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td>---</td>
                     <td>---</td>
                     <td>---</td>
@@ -388,14 +563,62 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">JENIS</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kiri']['lajur_1'][0]['jenis'])) {{ $data['badan_jalan']['lapis_permukaan']['kiri']['lajur_1'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kiri']['lajur_2'][0]['jenis'])) {{ $data['badan_jalan']['lapis_permukaan']['kiri']['lajur_2'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kiri']['lajur_3'][0]['jenis'])) {{ $data['badan_jalan']['lapis_permukaan']['kiri']['lajur_3'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kiri']['lajur_4'][0]['jenis'])) {{ $data['badan_jalan']['lapis_permukaan']['kiri']['lajur_4'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kanan']['lajur_4'][0]['jenis'])) {{ $data['badan_jalan']['lapis_permukaan']['kanan']['lajur_4'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kanan']['lajur_3'][0]['jenis'])) {{ $data['badan_jalan']['lapis_permukaan']['kanan']['lajur_3'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kanan']['lajur_2'][0]['jenis'])) {{ $data['badan_jalan']['lapis_permukaan']['kanan']['lajur_2'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_permukaan']['kanan']['lajur_1'][0]['jenis'])) {{ $data['badan_jalan']['lapis_permukaan']['kanan']['lajur_1'][0]['jenis'] }} @else --- @endif</td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ki_lajur1']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ki_lajur1'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ki_lajur2']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ki_lajur2'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ki_lajur3']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ki_lajur3'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ki_lajur4']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ki_lajur4'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ka_lajur4']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ka_lajur4'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ka_lajur3']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ka_lajur3'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ka_lajur2']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ka_lajur2'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ka_lajur1']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_permukaan"]["jenis"]['nilai_ka_lajur1'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td>---</td>
                     <td>---</td>
                     <td>---</td>
@@ -521,14 +744,62 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">TEBAL (M)</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_1'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_1'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_2'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_2'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_3'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_3'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_4'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_4'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_4'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_4'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_3'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_3'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_2'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_2'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_1'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_1'][0]['tebal'] }} @else --- @endif</td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ki_lajur1']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ki_lajur1'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ki_lajur2']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ki_lajur2'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ki_lajur3']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ki_lajur3'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ki_lajur4']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ki_lajur4'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ka_lajur4']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ka_lajur4'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ka_lajur3']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ka_lajur3'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ka_lajur2']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ka_lajur2'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ka_lajur1']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["tebal"]['nilai_ka_lajur1'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td>---</td>
                     <td>---</td>
                     <td>---</td>
@@ -540,14 +811,62 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">JENIS</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_1'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_1'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_2'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_2'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_3'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_3'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_4'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kiri']['lajur_4'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_4'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_4'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_3'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_3'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_2'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_2'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_1'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_atas']['kanan']['lajur_1'][0]['jenis'] }} @else --- @endif</td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ki_lajur1']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ki_lajur1'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ki_lajur2']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ki_lajur2'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ki_lajur3']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ki_lajur3'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ki_lajur4']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ki_lajur4'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ka_lajur4']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ka_lajur4'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ka_lajur3']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ka_lajur3'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ka_lajur2']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ka_lajur2'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ka_lajur1']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_atas"]["jenis"]['nilai_ka_lajur1'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td>---</td>
                     <td>---</td>
                     <td>---</td>
@@ -597,14 +916,62 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">TEBAL (M)</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_1'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_1'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_2'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_2'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_3'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_3'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_4'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_4'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_4'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_4'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_3'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_3'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_2'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_2'][0]['tebal'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_1'][0]['tebal'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_1'][0]['tebal'] }} @else --- @endif</td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ki_lajur1']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ki_lajur1'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ki_lajur2']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ki_lajur2'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ki_lajur3']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ki_lajur3'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ki_lajur4']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ki_lajur4'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ka_lajur4']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ka_lajur4'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ka_lajur3']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ka_lajur3'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ka_lajur2']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ka_lajur2'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ka_lajur1']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["tebal"]['nilai_ka_lajur1'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td>---</td>
                     <td>---</td>
                     <td>---</td>
@@ -616,14 +983,62 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">JENIS</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_1'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_1'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_2'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_2'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_3'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_3'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_4'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kiri']['lajur_4'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_4'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_4'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_3'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_3'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_2'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_2'][0]['jenis'] }} @else --- @endif</td>
-                    <td>@if (isset($data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_1'][0]['jenis'])) {{ $data['badan_jalan']['lapis_pondasi_bawah']['kanan']['lajur_1'][0]['jenis'] }} @else --- @endif</td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ki_lajur1']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ki_lajur1'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ki_lajur2']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ki_lajur2'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ki_lajur3']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ki_lajur3'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ki_lajur4']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ki_lajur4'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ka_lajur4']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ka_lajur4'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ka_lajur3']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ka_lajur3'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ka_lajur2']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ka_lajur2'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ka_lajur1']))
+                            {{ $data['data_jalan_teknik2_lapis']["lapis_pondasi_bawah"]["jenis"]['nilai_ka_lajur1'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td>---</td>
                     <td>---</td>
                     <td>---</td>
@@ -638,7 +1053,13 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">LEBAR</td>
-                    <td colspan="8">@if (isset($data['median']['lebar'])) {{ $data['median']['lebar'] }} @else --- @endif</td>
+                    <td colspan="8">
+                        @if (isset($data['data_jalan_teknik2_median']["lebar"]['nilai']))
+                            {{ $data['data_jalan_teknik2_median']["lebar"]['nilai'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td colspan="8">---</td>
                 </tr>
                 <tr>
@@ -686,10 +1107,34 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">TEBAL (M)</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_permukaan']['kiri_luar'][0]['tebal'])) {{ $data['bahu_jalan']['lapis_permukaan']['kiri_luar'][0]['tebal'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_permukaan']['kiri_dalam'][0]['tebal'])) {{ $data['bahu_jalan']['lapis_permukaan']['kiri_dalam'][0]['tebal'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_permukaan']['kanan_dalam'][0]['tebal'])) {{ $data['bahu_jalan']['lapis_permukaan']['kanan_dalam'][0]['tebal'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_permukaan']['kanan_luar'][0]['tebal'])) {{ $data['bahu_jalan']['lapis_permukaan']['kanan_luar'][0]['tebal'] }} @else --- @endif</td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["tebal"]['nilai_ki_luar']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["tebal"]['nilai_ki_luar'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["tebal"]['nilai_ki_dalam']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["tebal"]['nilai_ki_dalam'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["tebal"]['nilai_ka_dalam']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["tebal"]['nilai_ka_dalam'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["tebal"]['nilai_ka_luar']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["tebal"]['nilai_ka_luar'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td colspan="2">---</td>
                     <td colspan="2">---</td>
                     <td colspan="2">---</td>
@@ -697,10 +1142,34 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">JENIS</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_permukaan']['kiri_luar'][0]['jenis'])) {{ $data['bahu_jalan']['lapis_permukaan']['kiri_luar'][0]['jenis'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_permukaan']['kiri_dalam'][0]['jenis'])) {{ $data['bahu_jalan']['lapis_permukaan']['kiri_dalam'][0]['jenis'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_permukaan']['kanan_dalam'][0]['jenis'])) {{ $data['bahu_jalan']['lapis_permukaan']['kanan_dalam'][0]['jenis'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_permukaan']['kanan_luar'][0]['jenis'])) {{ $data['bahu_jalan']['lapis_permukaan']['kanan_luar'][0]['jenis'] }} @else --- @endif</td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["jenis"]['nilai_ki_luar']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["jenis"]['nilai_ki_luar'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["jenis"]['nilai_ki_dalam']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["jenis"]['nilai_ki_dalam'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["jenis"]['nilai_ka_dalam']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["jenis"]['nilai_ka_dalam'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["jenis"]['nilai_ka_luar']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_permukaan"]["jenis"]['nilai_ka_luar'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td colspan="2">---</td>
                     <td colspan="2">---</td>
                     <td colspan="2">---</td>
@@ -774,10 +1243,34 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">TEBAL (M)</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_atas']['kiri_luar'][0]['tebal'])) {{ $data['bahu_jalan']['lapis_pondasi_atas']['kiri_luar'][0]['tebal'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_atas']['kiri_dalam'][0]['tebal'])) {{ $data['bahu_jalan']['lapis_pondasi_atas']['kiri_dalam'][0]['tebal'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_atas']['kanan_dalam'][0]['tebal'])) {{ $data['bahu_jalan']['lapis_pondasi_atas']['kanan_dalam'][0]['tebal'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_atas']['kanan_luar'][0]['tebal'])) {{ $data['bahu_jalan']['lapis_pondasi_atas']['kanan_luar'][0]['tebal'] }} @else --- @endif</td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["tebal"]['nilai_ki_luar']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["tebal"]['nilai_ki_luar'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["tebal"]['nilai_ki_dalam']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["tebal"]['nilai_ki_dalam'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["tebal"]['nilai_ka_dalam']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["tebal"]['nilai_ka_dalam'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["tebal"]['nilai_ka_luar']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["tebal"]['nilai_ka_luar'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td colspan="2">---</td>
                     <td colspan="2">---</td>
                     <td colspan="2">---</td>
@@ -785,10 +1278,34 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">JENIS</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_atas']['kiri_luar'][0]['jenis'])) {{ $data['bahu_jalan']['lapis_pondasi_atas']['kiri_luar'][0]['jenis'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_atas']['kiri_dalam'][0]['jenis'])) {{ $data['bahu_jalan']['lapis_pondasi_atas']['kiri_dalam'][0]['jenis'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_atas']['kanan_dalam'][0]['jenis'])) {{ $data['bahu_jalan']['lapis_pondasi_atas']['kanan_dalam'][0]['jenis'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_atas']['kanan_luar'][0]['jenis'])) {{ $data['bahu_jalan']['lapis_pondasi_atas']['kanan_luar'][0]['jenis'] }} @else --- @endif</td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["jenis"]['nilai_ki_luar']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["jenis"]['nilai_ki_luar'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["jenis"]['nilai_ki_dalam']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["jenis"]['nilai_ki_dalam'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["jenis"]['nilai_ka_dalam']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["jenis"]['nilai_ka_dalam'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["jenis"]['nilai_ka_luar']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_atas"]["jenis"]['nilai_ka_luar'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td colspan="2">---</td>
                     <td colspan="2">---</td>
                     <td colspan="2">---</td>
@@ -818,10 +1335,34 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">TEBAL (M)</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_bawah']['kiri_luar'][0]['tebal'])) {{ $data['bahu_jalan']['lapis_pondasi_bawah']['kiri_luar'][0]['tebal'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_bawah']['kiri_dalam'][0]['tebal'])) {{ $data['bahu_jalan']['lapis_pondasi_bawah']['kiri_dalam'][0]['tebal'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_bawah']['kanan_dalam'][0]['tebal'])) {{ $data['bahu_jalan']['lapis_pondasi_bawah']['kanan_dalam'][0]['tebal'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_bawah']['kanan_luar'][0]['tebal'])) {{ $data['bahu_jalan']['lapis_pondasi_bawah']['kanan_luar'][0]['tebal'] }} @else --- @endif</td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_bawah"]["tebal"]['nilai_ki_luar']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_bawah"]["tebal"]['nilai_ki_luar'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_bawah"]["tebal"]['nilai_ki_dalam']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_bawah"]["tebal"]['nilai_ki_dalam'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_bawah"]["tebal"]['nilai_ka_dalam']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_bawah"]["tebal"]['nilai_ka_dalam'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_bawah"]["tebal"]['nilai_ka_luar']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapis_pondasi_bawah"]["tebal"]['nilai_ka_luar'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td colspan="2">---</td>
                     <td colspan="2">---</td>
                     <td colspan="2">---</td>
@@ -829,10 +1370,34 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">JENIS</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_bawah']['kiri_luar'][0]['jenis'])) {{ $data['bahu_jalan']['lapis_pondasi_bawah']['kiri_luar'][0]['jenis'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_bawah']['kiri_dalam'][0]['jenis'])) {{ $data['bahu_jalan']['lapis_pondasi_bawah']['kiri_dalam'][0]['jenis'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_bawah']['kanan_dalam'][0]['jenis'])) {{ $data['bahu_jalan']['lapis_pondasi_bawah']['kanan_dalam'][0]['jenis'] }} @else --- @endif</td>
-                    <td colspan="2">@if (isset($data['bahu_jalan']['lapis_pondasi_bawah']['kanan_luar'][0]['jenis'])) {{ $data['bahu_jalan']['lapis_pondasi_bawah']['kanan_luar'][0]['jenis'] }} @else --- @endif</td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapsi_pondasi_bawah"]["jenis"]['nilai_ki_luar']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapsi_pondasi_bawah"]["jenis"]['nilai_ki_luar'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapsi_pondasi_bawah"]["jenis"]['nilai_ki_dalam']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapsi_pondasi_bawah"]["jenis"]['nilai_ki_dalam'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapsi_pondasi_bawah"]["jenis"]['nilai_ka_dalam']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapsi_pondasi_bawah"]["jenis"]['nilai_ka_dalam'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
+                    <td colspan="2">
+                        @if (isset($data['data_jalan_teknik_2_bahujalan']["lapsi_pondasi_bawah"]["jenis"]['nilai_ka_luar']))
+                            {{ $data['data_jalan_teknik_2_bahujalan']["lapsi_pondasi_bawah"]["jenis"]['nilai_ka_luar'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td colspan="2">---</td>
                     <td colspan="2">---</td>
                     <td colspan="2">---</td>
@@ -1489,36 +2054,48 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">g. PAGAR OPERASIONAL</td>
-                    <td> @if (isset($data['pagar_operasional']['kiri'][0]['count']) && $data['pagar_operasional']['kiri'][0]['count'])
-                            {{ $data['pagar_operasional']['kiri'][0]['count'] }}
+                    <td>
+                        @if (isset($data['data_jalan_teknik4']["pagar_operasional"]['nilai_ki']) && $data['data_jalan_teknik4']["pagar_operasional"]['nilai_ki'])
+                            {{ $data['data_jalan_teknik4']["pagar_operasional"]['nilai_ki'] }}
                         @else
                             ---
                         @endif
-                    <td> @if (isset($data['pagar_operasional']['kiri'][0]['length']) && $data['pagar_operasional']['kiri'][0]['length'])
-                            {{ $data['pagar_operasional']['kiri'][0]['length'] }}
+                    </td>
+                    <td>
+                        @if (isset($data['pagar_operasional']['kiri']["pagar_operasional"]['length']) && $data['pagar_operasional']['kiri']["pagar_operasional"]['length'])
+                            {{ $data['pagar_operasional']['kiri']["pagar_operasional"]['length'] }}
                         @else
                             ---
                         @endif
-                    <td> @if (isset($data['pagar_operasional']['median'][0]['count']) && $data['pagar_operasional']['median'][0]['count'])
-                            {{ $data['pagar_operasional']['median'][0]['count'] }}
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik4']["pagar_operasional"]['nilai_md']) && $data['data_jalan_teknik4']["pagar_operasional"]['nilai_md'])
+                            {{ $data['data_jalan_teknik4']["pagar_operasional"]['nilai_md'] }}
                         @else
                             ---
                         @endif
-                    <td> @if (isset($data['pagar_operasional']['median'][0]['length']) && $data['pagar_operasional']['median'][0]['length'])
-                            {{ $data['pagar_operasional']['median'][0]['length'] }}
+                    </td>
+                    <td>
+                        @if (isset($data['pagar_operasional']['median']["pagar_operasional"]['length']) && $data['pagar_operasional']['median']["pagar_operasional"]['length'])
+                            {{ $data['pagar_operasional']['median']["pagar_operasional"]['length'] }}
                         @else
                             ---
                         @endif
-                    <td> @if (isset($data['pagar_operasional']['kanan'][0]['count']) && $data['pagar_operasional']['kanan'][0]['count'])
-                            {{ $data['pagar_operasional']['kanan'][0]['count'] }}
+                    </td>
+                    <td>
+                        @if (isset($data['data_jalan_teknik4']["pagar_operasional"]['nilai_ka']) && $data['data_jalan_teknik4']["pagar_operasional"]['nilai_ka'])
+                            {{ $data['data_jalan_teknik4']["pagar_operasional"]['nilai_ka'] }}
                         @else
                             ---
                         @endif
-                    <td> @if (isset($data['pagar_operasional']['kanan'][0]['length']) && $data['pagar_operasional']['kanan'][0]['length'])
-                            {{ $data['pagar_operasional']['kanan'][0]['length'] }}
+                    </td>
+                    <td>
+                        @if (isset($data['pagar_operasional']['kanan']["pagar_operasional"]['length']) && $data['pagar_operasional']['kanan']["pagar_operasional"]['length'])
+                            {{ $data['pagar_operasional']['kanan']["pagar_operasional"]['length'] }}
                         @else
                             ---
                         @endif
+                    </td>
                     <td>---</td>
                     <td>---</td>
                     <td>---</td>
@@ -1532,28 +2109,28 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">- PATOK KILOMETER</td>
                     <td>
-                        @if (isset($data['patok_km_count']['kiri']) && $data['patok_km_count']['kiri'])
-                            {{ $data['patok_km_count']['kiri'] }}
+                        @if (isset($data['data_jalan_teknik4']["patok_km"]['nilai_ki']) && $data['data_jalan_teknik4']["patok_km"]['nilai_ki'])
+                            {{ $data['data_jalan_teknik4']["patok_km"]['nilai_ki'] }}
                         @else
                             ---
+                        @endif
                     </td>
-                    @endif
                     <td>---</td>
                     <td>
-                        @if (isset($data['patok_km_count']['median']) && $data['patok_km_count']['median'])
-                            {{ $data['patok_km_count']['median'] }}
+                        @if (isset($data['data_jalan_teknik4']["patok_km"]['nilai_md']) && $data['data_jalan_teknik4']["patok_km"]['nilai_md'])
+                            {{ $data['data_jalan_teknik4']["patok_km"]['nilai_md'] }}
                         @else
                             ---
+                        @endif
                     </td>
-                    @endif
                     <td>---</td>
                     <td>
-                        @if (isset($data['patok_km_count']['kanan']) && $data['patok_km_count']['kanan'])
-                            {{ $data['patok_km_count']['kanan'] }}
+                        @if (isset($data['data_jalan_teknik4']["patok_km"]['nilai_ka']) && $data['data_jalan_teknik4']["patok_km"]['nilai_ka'])
+                            {{ $data['data_jalan_teknik4']["patok_km"]['nilai_ka'] }}
                         @else
                             ---
+                        @endif
                     </td>
-                    @endif
                     <td>---</td>
                     <td>---</td>
                     <td>---</td>
@@ -1565,28 +2142,28 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">- PATOK HEKTOMETER</td>
                     <td>
-                        @if (isset($data['patok_hm_count']['kiri']) && $data['patok_hm_count']['kiri'])
-                            {{ $data['patok_hm_count']['kiri'] }}
+                        @if (isset($data['data_jalan_teknik4']["patok_hm"]['nilai_ki']) && $data['data_jalan_teknik4']["patok_hm"]['nilai_ki'])
+                            {{ $data['data_jalan_teknik4']["patok_hm"]['nilai_ki'] }}
                         @else
                             ---
+                        @endif
                     </td>
-                    @endif
                     <td>---</td>
                     <td>
-                        @if (isset($data['patok_hm_count']['median']) && $data['patok_hm_count']['median'])
-                            {{ $data['patok_hm_count']['median'] }}
+                        @if (isset($data['data_jalan_teknik4']["patok_hm"]['nilai_md']) && $data['data_jalan_teknik4']["patok_hm"]['nilai_md'])
+                            {{ $data['data_jalan_teknik4']["patok_hm"]['nilai_md'] }}
                         @else
                             ---
+                        @endif
                     </td>
-                    @endif
                     <td>---</td>
                     <td>
-                        @if (isset($data['patok_hm_count']['kanan']) && $data['patok_hm_count']['kanan'])
-                            {{ $data['patok_hm_count']['kanan'] }}
+                        @if (isset($data['data_jalan_teknik4']["patok_hm"]['nilai_ka']) && $data['data_jalan_teknik4']["patok_hm"]['nilai_ka'])
+                            {{ $data['data_jalan_teknik4']["patok_hm"]['nilai_ka'] }}
                         @else
                             ---
+                        @endif
                     </td>
-                    @endif
                     <td>---</td>
                     <td>---</td>
                     <td>---</td>
@@ -1598,28 +2175,28 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">- PATOK LJ</td>
                     <td>
-                        @if (isset($data['patok_lj_count']['kiri']) && $data['patok_lj_count']['kiri'])
-                            {{ $data['patok_lj_count']['kiri'] }}
+                        @if (isset($data['data_jalan_teknik4']["patok_lj"]['nilai_ki']) && $data['data_jalan_teknik4']["patok_lj"]['nilai_ki'])
+                            {{ $data['data_jalan_teknik4']["patok_lj"]['nilai_ki'] }}
                         @else
                             ---
+                        @endif
                     </td>
-                    @endif
                     <td>---</td>
                     <td>
-                        @if (isset($data['patok_lj_count']['median']) && $data['patok_lj_count']['median'])
-                            {{ $data['patok_lj_count']['median'] }}
+                        @if (isset($data['data_jalan_teknik4']["patok_lj"]['nilai_md']) && $data['data_jalan_teknik4']["patok_lj"]['nilai_md'])
+                            {{ $data['data_jalan_teknik4']["patok_lj"]['nilai_md'] }}
                         @else
                             ---
+                        @endif
                     </td>
-                    @endif
                     <td>---</td>
                     <td>
-                        @if (isset($data['patok_lj_count']['kanan']) && $data['patok_lj_count']['kanan'])
-                            {{ $data['patok_lj_count']['kanan'] }}
+                        @if (isset($data['data_jalan_teknik4']["patok_lj"]['nilai_ka']) && $data['data_jalan_teknik4']["patok_lj"]['nilai_ka'])
+                            {{ $data['data_jalan_teknik4']["patok_lj"]['nilai_ka'] }}
                         @else
                             ---
+                        @endif
                     </td>
-                    @endif
                     <td>---</td>
                     <td>---</td>
                     <td>---</td>
@@ -1631,28 +2208,28 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">- PATOK RMJ</td>
                     <td>
-                        @if (isset($data['patok_rmj_count']['kiri']) && $data['patok_rmj_count']['kiri'])
-                            {{ $data['patok_rmj_count']['kiri'] }}
+                        @if (isset($data['data_jalan_teknik4']["patok_rmj"]['nilai_ki']) && $data['data_jalan_teknik4']["patok_rmj"]['nilai_ki'])
+                            {{ $data['data_jalan_teknik4']["patok_rmj"]['nilai_ki'] }}
                         @else
                             ---
+                        @endif
                     </td>
-                    @endif
                     <td>---</td>
                     <td>
-                        @if (isset($data['patok_rmj_count']['median']) && $data['patok_rmj_count']['median'])
-                            {{ $data['patok_rmj_count']['median'] }}
+                        @if (isset($data['data_jalan_teknik4']["patok_rmj"]['nilai_md']) && $data['data_jalan_teknik4']["patok_rmj"]['nilai_md'])
+                            {{ $data['data_jalan_teknik4']["patok_rmj"]['nilai_md'] }}
                         @else
                             ---
+                        @endif
                     </td>
-                    @endif
                     <td>---</td>
                     <td>
-                        @if (isset($data['patok_rmj_count']['kanan']) && $data['patok_rmj_count']['kanan'])
-                            {{ $data['patok_rmj_count']['kanan'] }}
+                        @if (isset($data['data_jalan_teknik4']["patok_rmj"]['nilai_ka']) && $data['data_jalan_teknik4']["patok_rmj"]['nilai_ka'])
+                            {{ $data['data_jalan_teknik4']["patok_rmj"]['nilai_ka'] }}
                         @else
                             ---
+                        @endif
                     </td>
-                    @endif
                     <td>---</td>
                     <td>---</td>
                     <td>---</td>
@@ -1708,16 +2285,16 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">a. GOLONGAN I (SEDAN, JIP, PICKUP, BUS)</td>
                     <td>
-                        @if (isset($data['lhr_sum']['golongan_i']['kiri']) && $data['lhr_sum']['golongan_i']['kiri'])
-                            {{ $data['lhr_sum']['golongan_i']['kiri'] }}
+                        @if (isset($data['data_jalan_lhr']["golongan_i"]['lhr_ki']) && $data['data_jalan_lhr']["golongan_i"]['lhr_ki'])
+                            {{ $data['data_jalan_lhr']["golongan_i"]['lhr_ki'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td>---</td>
                     <td>
-                        @if (isset($data['lhr_sum']['golongan_i']['kanan']) && $data['lhr_sum']['golongan_i']['kanan'])
-                            {{ $data['lhr_sum']['golongan_i']['kanan'] }}
+                        @if (isset($data['data_jalan_lhr']["golongan_i"]['lhr_ka']) && $data['data_jalan_lhr']["golongan_i"]['lhr_ka'])
+                            {{ $data['data_jalan_lhr']["golongan_i"]['lhr_ka'] }}
                         @else
                             ---
                         @endif
@@ -1729,16 +2306,16 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">b. GOLONGAN II (TRUK DENGAN 2 GANDAR)</td>
                     <td>
-                        @if (isset($data['lhr_sum']['golongan_ii']['kiri']) && $data['lhr_sum']['golongan_ii']['kiri'])
-                            {{ $data['lhr_sum']['golongan_ii']['kiri'] }}
+                        @if (isset($data['data_jalan_lhr']["golongan_ii"]['lhr_ki']) && $data['data_jalan_lhr']["golongan_ii"]['lhr_ki'])
+                            {{ $data['data_jalan_lhr']["golongan_ii"]['lhr_ki'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td>---</td>
                     <td>
-                        @if (isset($data['lhr_sum']['golongan_ii']['kanan']) && $data['lhr_sum']['golongan_ii']['kanan'])
-                            {{ $data['lhr_sum']['golongan_ii']['kanan'] }}
+                        @if (isset($data['data_jalan_lhr']["golongan_ii"]['lhr_ka']) && $data['data_jalan_lhr']["golongan_ii"]['lhr_ka'])
+                            {{ $data['data_jalan_lhr']["golongan_ii"]['lhr_ka'] }}
                         @else
                             ---
                         @endif
@@ -1750,16 +2327,16 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">c. GOLONGAN III (TRUK DENGAN 3 GANDAR)</td>
                     <td>
-                        @if (isset($data['lhr_sum']['golongan_iii']['kiri']) && $data['lhr_sum']['golongan_iii']['kiri'])
-                            {{ $data['lhr_sum']['golongan_iii']['kiri'] }}
+                        @if (isset($data['data_jalan_lhr']["golongan_iii"]['lhr_ki']) && $data['data_jalan_lhr']["golongan_iii"]['lhr_ki'])
+                            {{ $data['data_jalan_lhr']["golongan_iii"]['lhr_ki'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td>---</td>
                     <td>
-                        @if (isset($data['lhr_sum']['golongan_iii']['kanan']) && $data['lhr_sum']['golongan_iii']['kanan'])
-                            {{ $data['lhr_sum']['golongan_iii']['kanan'] }}
+                        @if (isset($data['data_jalan_lhr']["golongan_iii"]['lhr_ka']) && $data['data_jalan_lhr']["golongan_iii"]['lhr_ka'])
+                            {{ $data['data_jalan_lhr']["golongan_iii"]['lhr_ka'] }}
                         @else
                             ---
                         @endif
@@ -1771,16 +2348,16 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">d. GOLONGAN IV (TRUK DENGAN 4 GANDAR)</td>
                     <td>
-                        @if (isset($data['lhr_sum']['golongan_iv']['kiri']) && $data['lhr_sum']['golongan_iv']['kiri'])
-                            {{ $data['lhr_sum']['golongan_iv']['kiri'] }}
+                        @if (isset($data['data_jalan_lhr']["golongan_iv"]['lhr_ki']) && $data['data_jalan_lhr']["golongan_iv"]['lhr_ki'])
+                            {{ $data['data_jalan_lhr']["golongan_iv"]['lhr_ki'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td>---</td>
                     <td>
-                        @if (isset($data['lhr_sum']['golongan_iv']['kanan']) && $data['lhr_sum']['golongan_iv']['kanan'])
-                            {{ $data['lhr_sum']['golongan_iv']['kanan'] }}
+                        @if (isset($data['data_jalan_lhr']["golongan_iv"]['lhr_ka']) && $data['data_jalan_lhr']["golongan_iv"]['lhr_ka'])
+                            {{ $data['data_jalan_lhr']["golongan_iv"]['lhr_ka'] }}
                         @else
                             ---
                         @endif
@@ -1792,16 +2369,16 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">e. GOLONGAN V (TRUK DENGAN 5 GANDAR ATAU LEBIH)</td>
                     <td>
-                        @if (isset($data['lhr_sum']['golongan_v']['kiri']) && $data['lhr_sum']['golongan_v']['kiri'])
-                            {{ $data['lhr_sum']['golongan_v']['kiri'] }}
+                        @if (isset($data['data_jalan_lhr']["golongan_v"]['lhr_ki']) && $data['data_jalan_lhr']["golongan_v"]['lhr_ki'])
+                            {{ $data['data_jalan_lhr']["golongan_v"]['lhr_ki'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td>---</td>
                     <td>
-                        @if (isset($data['lhr_sum']['golongan_v']['kanan']) && $data['lhr_sum']['golongan_v']['kanan'])
-                            {{ $data['lhr_sum']['golongan_v']['kanan'] }}
+                        @if (isset($data['data_jalan_lhr']["golongan_v"]['lhr_ka']) && $data['data_jalan_lhr']["golongan_v"]['lhr_ka'])
+                            {{ $data['data_jalan_lhr']["golongan_v"]['lhr_ka'] }}
                         @else
                             ---
                         @endif
@@ -1813,14 +2390,20 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">f. GOLONGAN VI (KENDARAAN RODA DUA)</td>
                     <td>
-                        @if (isset($data['lhr_sum']['golongan_vi']['kiri']) && $data['lhr_sum']['golongan_vi']['kiri'])
-                            {{ $data['lhr_sum']['golongan_vi']['kiri'] }}
+                        @if (isset($data['data_jalan_lhr']["golongan_vi"]['lhr_ki']) && $data['data_jalan_lhr']["golongan_vi"]['lhr_ki'])
+                            {{ $data['data_jalan_lhr']["golongan_vi"]['lhr_ki'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td>---</td>
-                    <td>---</td>
+                    <td>
+                        @if (isset($data['data_jalan_lhr']["golongan_vi"]['lhr_ka']) && $data['data_jalan_lhr']["golongan_vi"]['lhr_ka'])
+                            {{ $data['data_jalan_lhr']["golongan_vi"]['lhr_ka'] }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td>---</td>
                     <td>---</td>
                     <td>---</td>
@@ -1860,29 +2443,29 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">JENIS MATERIAL</td>
                     <td colspan="3">
-                        @if (isset($data['gorong_gorong'][0]['jenis_material']) && $data['gorong_gorong'][0]['jenis_material'])
-                            {{ $data['gorong_gorong'][0]['jenis_material'] }}
+                        @if (isset($data['data_jalan_teknik3_goronggorong']["jenis_material"]['nilai_ke1']) && $data['data_jalan_teknik3_goronggorong']["jenis_material"]['nilai_ke1'])
+                            {{ $data['data_jalan_teknik3_goronggorong']["jenis_material"]['nilai_ke1'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td colspan="3">
-                        @if (isset($data['gorong_gorong'][1]['jenis_material']) && $data['gorong_gorong'][1]['jenis_material'])
-                            {{ $data['gorong_gorong'][1]['jenis_material'] }}
+                        @if (isset($data['data_jalan_teknik3_goronggorong']["jenis_material"]['nilai_ke2']) && $data['data_jalan_teknik3_goronggorong']["jenis_material"]['nilai_ke2'])
+                            {{ $data['data_jalan_teknik3_goronggorong']["jenis_material"]['nilai_ke2'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td colspan="3">
-                        @if (isset($data['gorong_gorong'][2]['jenis_material']) && $data['gorong_gorong'][2]['jenis_material'])
-                            {{ $data['gorong_gorong'][2]['jenis_material'] }}
+                        @if (isset($data['data_jalan_teknik3_goronggorong']["jenis_material"]['nilai_ke3']) && $data['data_jalan_teknik3_goronggorong']["jenis_material"]['nilai_ke3'])
+                            {{ $data['data_jalan_teknik3_goronggorong']["jenis_material"]['nilai_ke3'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td colspan="3">
-                        @if (isset($data['gorong_gorong'][3]['jenis_material']) && $data['gorong_gorong'][3]['jenis_material'])
-                            {{ $data['gorong_gorong'][3]['jenis_material'] }}
+                        @if (isset($data['data_jalan_teknik3_goronggorong']["jenis_material"]['nilai_ke4']) && $data['data_jalan_teknik3_goronggorong']["jenis_material"]['nilai_ke4'])
+                            {{ $data['data_jalan_teknik3_goronggorong']["jenis_material"]['nilai_ke4'] }}
                         @else
                             ---
                         @endif
@@ -1895,29 +2478,29 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">UKURAN PANJANG (M)</td>
                     <td colspan="3">
-                        @if (isset($data['gorong_gorong'][0]['ukuran_panjang']) && $data['gorong_gorong'][0]['ukuran_panjang'])
-                            {{ $data['gorong_gorong'][0]['ukuran_panjang'] }}
+                        @if (isset($data['data_jalan_teknik3_goronggorong']["ukuran_panjang"]['nilai_ke1']) && $data['data_jalan_teknik3_goronggorong']["ukuran_panjang"]['nilai_ke1'])
+                            {{ $data['data_jalan_teknik3_goronggorong']["ukuran_panjang"]['nilai_ke1'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td colspan="3">
-                        @if (isset($data['gorong_gorong'][1]['ukuran_panjang']) && $data['gorong_gorong'][1]['ukuran_panjang'])
-                            {{ $data['gorong_gorong'][1]['ukuran_panjang'] }}
+                        @if (isset($data['data_jalan_teknik3_goronggorong']["ukuran_panjang"]['nilai_ke2']) && $data['data_jalan_teknik3_goronggorong']["ukuran_panjang"]['nilai_ke2'])
+                            {{ $data['data_jalan_teknik3_goronggorong']["ukuran_panjang"]['nilai_ke2'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td colspan="3">
-                        @if (isset($data['gorong_gorong'][2]['ukuran_panjang']) && $data['gorong_gorong'][2]['ukuran_panjang'])
-                            {{ $data['gorong_gorong'][2]['ukuran_panjang'] }}
+                        @if (isset($data['data_jalan_teknik3_goronggorong']["ukuran_panjang"]['nilai_ke3']) && $data['data_jalan_teknik3_goronggorong']["ukuran_panjang"]['nilai_ke3'])
+                            {{ $data['data_jalan_teknik3_goronggorong']["ukuran_panjang"]['nilai_ke3'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td colspan="3">
-                        @if (isset($data['gorong_gorong'][3]['ukuran_panjang']) && $data['gorong_gorong'][3]['ukuran_panjang'])
-                            {{ $data['gorong_gorong'][3]['ukuran_panjang'] }}
+                        @if (isset($data['data_jalan_teknik3_goronggorong']["ukuran_panjang"]['nilai_ke4']) && $data['data_jalan_teknik3_goronggorong']["ukuran_panjang"]['nilai_ke4'])
+                            {{ $data['data_jalan_teknik3_goronggorong']["ukuran_panjang"]['nilai_ke4'] }}
                         @else
                             ---
                         @endif
@@ -1930,29 +2513,29 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">KONDISI</td>
                     <td colspan="3">
-                        @if (isset($data['gorong_gorong'][0]['kondisi']) && $data['gorong_gorong'][0]['kondisi'])
-                            {{ $data['gorong_gorong'][0]['kondisi'] }}
+                        @if (isset($data['data_jalan_teknik3_goronggorong']["kondisi"]['nilai_ke1']) && $data['data_jalan_teknik3_goronggorong']["kondisi"]['nilai_ke1'])
+                            {{ $data['data_jalan_teknik3_goronggorong']["kondisi"]['nilai_ke1'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td colspan="3">
-                        @if (isset($data['gorong_gorong'][1]['kondisi']) && $data['gorong_gorong'][1]['kondisi'])
-                            {{ $data['gorong_gorong'][1]['kondisi'] }}
+                        @if (isset($data['data_jalan_teknik3_goronggorong']["kondisi"]['nilai_ke2']) && $data['data_jalan_teknik3_goronggorong']["kondisi"]['nilai_ke2'])
+                            {{ $data['data_jalan_teknik3_goronggorong']["kondisi"]['nilai_ke2'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td colspan="3">
-                        @if (isset($data['gorong_gorong'][2]['kondisi']) && $data['gorong_gorong'][2]['kondisi'])
-                            {{ $data['gorong_gorong'][2]['kondisi'] }}
+                        @if (isset($data['data_jalan_teknik3_goronggorong']["kondisi"]['nilai_ke3']) && $data['data_jalan_teknik3_goronggorong']["kondisi"]['nilai_ke3'])
+                            {{ $data['data_jalan_teknik3_goronggorong']["kondisi"]['nilai_ke3'] }}
                         @else
                             ---
                         @endif
                     </td>
                     <td colspan="3">
-                        @if (isset($data['gorong_gorong'][3]['kondisi']) && $data['gorong_gorong'][3]['kondisi'])
-                            {{ $data['gorong_gorong'][3]['kondisi'] }}
+                        @if (isset($data['data_jalan_teknik3_goronggorong']["kondisi"]['nilai_ke4']) && $data['data_jalan_teknik3_goronggorong']["kondisi"]['nilai_ke4'])
+                            {{ $data['data_jalan_teknik3_goronggorong']["kondisi"]['nilai_ke4'] }}
                         @else
                             ---
                         @endif
@@ -2440,77 +3023,89 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">JENIS MATERIAL</td>
-                    <td>   @if (isset($data['manhole']['kiri'][0]['jenis_material']) && $data['manhole']['kiri'][0]['jenis_material'])
-                        {{ $data['manhole']['kiri'][0]['jenis_material'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke1_ki']) && $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke1_ki'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke1_ki'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['median'][0]['jenis_material']) && $data['manhole']['median'][0]['jenis_material'])
-                        {{ $data['manhole']['median'][0]['jenis_material'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke1_md']) && $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke1_md'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke1_md'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kanan'][0]['jenis_material']) && $data['manhole']['kanan'][0]['jenis_material'])
-                        {{ $data['manhole']['kanan'][0]['jenis_material'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke1_ka']) && $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke1_ka'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke1_ka'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kiri'][1]['jenis_material']) && $data['manhole']['kiri'][1]['jenis_material'])
-                        {{ $data['manhole']['kiri'][1]['jenis_material'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke2_ki']) && $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke2_ki'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke2_ki'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['median'][1]['jenis_material']) && $data['manhole']['median'][1]['jenis_material'])
-                        {{ $data['manhole']['median'][1]['jenis_material'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke2_md']) && $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke2_md'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke2_md'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kanan'][1]['jenis_material']) && $data['manhole']['kanan'][1]['jenis_material'])
-                        {{ $data['manhole']['kanan'][1]['jenis_material'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke2_ka']) && $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke2_ka'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke2_ka'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kiri'][2]['jenis_material']) && $data['manhole']['kiri'][2]['jenis_material'])
-                        {{ $data['manhole']['kiri'][2]['jenis_material'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke3_ki']) && $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke3_ki'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke3_ki'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['median'][2]['jenis_material']) && $data['manhole']['median'][2]['jenis_material'])
-                        {{ $data['manhole']['median'][2]['jenis_material'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke3_md']) && $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke3_md'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke3_md'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kanan'][2]['jenis_material']) && $data['manhole']['kanan'][2]['jenis_material'])
-                        {{ $data['manhole']['kanan'][2]['jenis_material'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke3_ka']) && $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke3_ka'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke3_ka'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kiri'][3]['jenis_material']) && $data['manhole']['kiri'][3]['jenis_material'])
-                        {{ $data['manhole']['kiri'][3]['jenis_material'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke4_ki']) && $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke4_ki'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke4_ki'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['median'][3]['jenis_material']) && $data['manhole']['median'][3]['jenis_material'])
-                        {{ $data['manhole']['median'][3]['jenis_material'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke4_md']) && $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke4_md'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke4_md'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kanan'][3]['jenis_material']) && $data['manhole']['kanan'][3]['jenis_material'])
-                        {{ $data['manhole']['kanan'][3]['jenis_material'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke4_ka']) && $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke4_ka'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["jenis_material"]['nilai_ke4_ka'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
                     <td>---</td>
                     <td>---</td>
@@ -2527,77 +3122,89 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">UKURAN POKOK (BH)</td>
-                    <td>   @if (isset($data['manhole']['kiri'][0]['ukuran_pokok']) && $data['manhole']['kiri'][0]['ukuran_pokok'])
-                        {{ $data['manhole']['kiri'][0]['ukuran_pokok'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke1_ki']) && $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke1_ki'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke1_ki'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['median'][0]['ukuran_pokok']) && $data['manhole']['median'][0]['ukuran_pokok'])
-                        {{ $data['manhole']['median'][0]['ukuran_pokok'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke1_md']) && $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke1_md'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke1_md'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kanan'][0]['ukuran_pokok']) && $data['manhole']['kanan'][0]['ukuran_pokok'])
-                        {{ $data['manhole']['kanan'][0]['ukuran_pokok'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke1_ka']) && $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke1_ka'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke1_ka'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kiri'][1]['ukuran_pokok']) && $data['manhole']['kiri'][1]['ukuran_pokok'])
-                        {{ $data['manhole']['kiri'][1]['ukuran_pokok'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke2_ki']) && $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke2_ki'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke2_ki'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['median'][1]['ukuran_pokok']) && $data['manhole']['median'][1]['ukuran_pokok'])
-                        {{ $data['manhole']['median'][1]['ukuran_pokok'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke2_md']) && $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke2_md'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke2_md'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kanan'][1]['ukuran_pokok']) && $data['manhole']['kanan'][1]['ukuran_pokok'])
-                        {{ $data['manhole']['kanan'][1]['ukuran_pokok'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke2_ka']) && $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke2_ka'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke2_ka'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kiri'][2]['ukuran_pokok']) && $data['manhole']['kiri'][2]['ukuran_pokok'])
-                        {{ $data['manhole']['kiri'][2]['ukuran_pokok'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke3_ki']) && $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke3_ki'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke3_ki'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['median'][2]['ukuran_pokok']) && $data['manhole']['median'][2]['ukuran_pokok'])
-                        {{ $data['manhole']['median'][2]['ukuran_pokok'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke3_md']) && $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke3_md'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke3_md'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kanan'][2]['ukuran_pokok']) && $data['manhole']['kanan'][2]['ukuran_pokok'])
-                        {{ $data['manhole']['kanan'][2]['ukuran_pokok'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke3_ka']) && $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke3_ka'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke3_ka'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kiri'][3]['ukuran_pokok']) && $data['manhole']['kiri'][3]['ukuran_pokok'])
-                        {{ $data['manhole']['kiri'][3]['ukuran_pokok'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke4_ki']) && $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke4_ki'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke4_ki'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['median'][3]['ukuran_pokok']) && $data['manhole']['median'][3]['ukuran_pokok'])
-                        {{ $data['manhole']['median'][3]['ukuran_pokok'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke4_md']) && $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke4_md'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke4_md'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kanan'][3]['ukuran_pokok']) && $data['manhole']['kanan'][3]['ukuran_pokok'])
-                        {{ $data['manhole']['kanan'][3]['ukuran_pokok'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke4_ka']) && $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke4_ka'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["ukuran_pokok"]['nilai_ke4_ka'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
                     <td>---</td>
                     <td>---</td>
@@ -2614,77 +3221,89 @@
                 </tr>
                 <tr>
                     <td style="border-right: 0.1px solid black;">KONDISI</td>
-                    <td>   @if (isset($data['manhole']['kiri'][0]['kondisi']) && $data['manhole']['kiri'][0]['kondisi'])
-                        {{ $data['manhole']['kiri'][0]['kondisi'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke1_ki']) && $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke1_ki'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke1_ki'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['median'][0]['kondisi']) && $data['manhole']['median'][0]['kondisi'])
-                        {{ $data['manhole']['median'][0]['kondisi'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke1_md']) && $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke1_md'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke1_md'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kanan'][0]['kondisi']) && $data['manhole']['kanan'][0]['kondisi'])
-                        {{ $data['manhole']['kanan'][0]['kondisi'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke1_ka']) && $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke1_ka'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke1_ka'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kiri'][1]['kondisi']) && $data['manhole']['kiri'][1]['kondisi'])
-                        {{ $data['manhole']['kiri'][1]['kondisi'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke2_ki']) && $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke2_ki'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke2_ki'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['median'][1]['kondisi']) && $data['manhole']['median'][1]['kondisi'])
-                        {{ $data['manhole']['median'][1]['kondisi'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke2_md']) && $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke2_md'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke2_md'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kanan'][1]['kondisi']) && $data['manhole']['kanan'][1]['kondisi'])
-                        {{ $data['manhole']['kanan'][1]['kondisi'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke2_ka']) && $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke2_ka'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke2_ka'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kiri'][2]['kondisi']) && $data['manhole']['kiri'][2]['kondisi'])
-                        {{ $data['manhole']['kiri'][2]['kondisi'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke3_ki']) && $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke3_ki'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke3_ki'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['median'][2]['kondisi']) && $data['manhole']['median'][2]['kondisi'])
-                        {{ $data['manhole']['median'][2]['kondisi'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke3_md']) && $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke3_md'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke3_md'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kanan'][2]['kondisi']) && $data['manhole']['kanan'][2]['kondisi'])
-                        {{ $data['manhole']['kanan'][2]['kondisi'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke3_ka']) && $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke3_ka'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke3_ka'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kiri'][3]['kondisi']) && $data['manhole']['kiri'][3]['kondisi'])
-                        {{ $data['manhole']['kiri'][3]['kondisi'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke4_ki']) && $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke4_ki'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke4_ki'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['median'][3]['kondisi']) && $data['manhole']['median'][3]['kondisi'])
-                        {{ $data['manhole']['median'][3]['kondisi'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke4_md']) && $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke4_md'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke4_md'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
-                    <td>   @if (isset($data['manhole']['kanan'][3]['kondisi']) && $data['manhole']['kanan'][3]['kondisi'])
-                        {{ $data['manhole']['kanan'][3]['kondisi'] }}
-                    @else
-                        ---
-                    @endif
+                    <td>
+                        @if (isset($data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke4_ka']) && $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke4_ka'])
+                            {{ $data['data_jalan_teknik3_saluran']["manhole"]["kondisi"]['nilai_ke4_ka'] }}
+                        @else
+                            ---
+                        @endif
                     </td>
                     <td>---</td>
                     <td>---</td>
@@ -4077,8 +4696,8 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">LEBAR RUMIJA (M)</td>
                     <td>
-                        @if (isset($data['data_geometrik_jalan'][0]['lebar_rmj']) && $data['data_geometrik_jalan'][0]['lebar_rmj'])
-                            {{ $data['data_geometrik_jalan'][0]['lebar_rmj'] }}
+                        @if (isset($data['data_jalan_geometrik']["lebar_rumija"]['nilai']) && $data['data_jalan_geometrik']["lebar_rumija"]['nilai'])
+                            {{ $data['data_jalan_geometrik']["lebar_rumija"]['nilai'] }}
                         @else
                             ---
                         @endif
@@ -4088,17 +4707,17 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">KELANDAIAN (%) KI / KA</td>
                     <td>
-                        @if (isset($data['data_geometrik_jalan'][0]['gradien_kiri']) &&
-                                $data['data_geometrik_jalan'][0]['gradien_kiri'] &&
-                                isset($data['data_geometrik_jalan'][0]['gradien_kanan']) &&
-                                $data['data_geometrik_jalan'][0]['gradien_kanan']
+                        @if (isset($data['data_jalan_geometrik']["kelandaian_kiri"]['nilai']) &&
+                                $data['data_jalan_geometrik']["kelandaian_kiri"]['nilai'] &&
+                                isset($data['data_jalan_geometrik']["kelandaian_kanan"]['nilai']) &&
+                                $data['data_jalan_geometrik']["kelandaian_kanan"]['nilai']
                         )
-                            {{ $data['data_geometrik_jalan'][0]['gradien_kiri'] }} /
-                            {{ $data['data_geometrik_jalan'][0]['gradien_kanan'] }}
-                        @elseif (isset($data['data_geometrik_jalan'][0]['gradien_kiri']) && $data['data_geometrik_jalan'][0]['gradien_kiri'])
-                            {{ $data['data_geometrik_jalan'][0]['gradien_kiri'] }} / ---
-                        @elseif (isset($data['data_geometrik_jalan'][0]['gradien_kanan']) && $data['data_geometrik_jalan'][0]['gradien_kanan'])
-                            --- / {{ $data['data_geometrik_jalan'][0]['gradien_kanan'] }}
+                            {{ $data['data_jalan_geometrik']["kelandaian_kiri"]['nilai'] }} /
+                            {{ $data['data_jalan_geometrik']["kelandaian_kanan"]['nilai'] }}
+                        @elseif (isset($data['data_jalan_geometrik']["kelandaian_kiri"]['nilai']) && $data['data_jalan_geometrik']["kelandaian_kiri"]['nilai'])
+                            {{ $data['data_jalan_geometrik']["kelandaian_kiri"]['nilai'] }} / ---
+                        @elseif (isset($data['data_jalan_geometrik']["kelandaian_kanan"]['nilai']) && $data['data_jalan_geometrik']["kelandaian_kanan"]['nilai'])
+                            --- / {{ $data['data_jalan_geometrik']["kelandaian_kanan"]['nilai'] }}
                         @else
                             --- / ---
                         @endif
@@ -4108,17 +4727,17 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">CROSS FALL (%)</td>
                     <td>
-                        @if (isset($data['data_geometrik_jalan'][0]['cross_fall_kiri']) &&
-                                $data['data_geometrik_jalan'][0]['cross_fall_kiri'] &&
-                                isset($data['data_geometrik_jalan'][0]['cross_fall_kanan']) &&
-                                $data['data_geometrik_jalan'][0]['cross_fall_kanan']
+                        @if (isset($data['data_jalan_geometrik']["crossfall_kiri"]['nilai']) &&
+                                $data['data_jalan_geometrik']["crossfall_kiri"]['nilai'] &&
+                                isset($data['data_jalan_geometrik']["crossfall_kanan"]['nilai']) &&
+                                $data['data_jalan_geometrik']["crossfall_kanan"]['nilai']
                         )
-                            {{ $data['data_geometrik_jalan'][0]['cross_fall_kiri'] }} /
-                            {{ $data['data_geometrik_jalan'][0]['cross_fall_kanan'] }}
-                        @elseif (isset($data['data_geometrik_jalan'][0]['cross_fall_kiri']) && $data['data_geometrik_jalan'][0]['cross_fall_kiri'])
-                            {{ $data['data_geometrik_jalan'][0]['cross_fall_kiri'] }} / ---
-                        @elseif (isset($data['data_geometrik_jalan'][0]['cross_fall_kanan']) && $data['data_geometrik_jalan'][0]['cross_fall_kanan'])
-                            --- / {{ $data['data_geometrik_jalan'][0]['cross_fall_kanan'] }}
+                            {{ $data['data_jalan_geometrik']["crossfall_kiri"]['nilai'] }} /
+                            {{ $data['data_jalan_geometrik']["crossfall_kanan"]['nilai'] }}
+                        @elseif (isset($data['data_jalan_geometrik']["crossfall_kiri"]['nilai']) && $data['data_jalan_geometrik']["crossfall_kiri"]['nilai'])
+                            {{ $data['data_jalan_geometrik']["crossfall_kiri"]['nilai'] }} / ---
+                        @elseif (isset($data['data_jalan_geometrik']["crossfall_kanan"]['nilai']) && $data['data_jalan_geometrik']["crossfall_kanan"]['nilai'])
+                            --- / {{ $data['data_jalan_geometrik']["crossfall_kanan"]['nilai'] }}
                         @else
                             --- / ---
                         @endif
@@ -4128,8 +4747,8 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">SUPERELEVASI (%)</td>
                     <td>
-                        @if (isset($data['data_geometrik_jalan'][0]['super_elevasi']) && $data['data_geometrik_jalan'][0]['super_elevasi'])
-                            {{ $data['data_geometrik_jalan'][0]['super_elevasi'] }}
+                        @if (isset($data['data_jalan_geometrik']["superelevasi"]['nilai']) && $data['data_jalan_geometrik']["superelevasi"]['nilai'])
+                            {{ $data['data_jalan_geometrik']["superelevasi"]['nilai'] }}
                         @else
                             ---
                         @endif
@@ -4139,8 +4758,8 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">RADIUS (M)</td>
                     <td>
-                        @if (isset($data['data_geometrik_jalan'][0]['radius']) && $data['data_geometrik_jalan'][0]['radius'])
-                            {{ $data['data_geometrik_jalan'][0]['radius'] }}
+                        @if (isset($data['data_jalan_geometrik']["radius"]['nilai']) && $data['data_jalan_geometrik']["radius"]['nilai'])
+                            {{ $data['data_jalan_geometrik']["radius"]['nilai'] }}
                         @else
                             ---
                         @endif
@@ -4169,8 +4788,8 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">TERRAIN KIRI</td>
                     <td>
-                        @if (isset($data['data_geometrik_jalan'][0]['terrain_kiri']) && $data['data_geometrik_jalan'][0]['terrain_kiri'])
-                            {{ $data['data_geometrik_jalan'][0]['terrain_kiri'] }}
+                        @if (isset($data['data_jalan_situasi']["terrain_kiri"]['nilai']) && $data['data_jalan_situasi']["terrain_kiri"]['nilai'])
+                            {{ $data['data_jalan_situasi']["terrain_kiri"]['nilai'] }}
                         @else
                             ---
                         @endif
@@ -4180,8 +4799,8 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">TERRAIN KANAN</td>
                     <td>
-                        @if (isset($data['data_geometrik_jalan'][0]['terrain_kanan']) && $data['data_geometrik_jalan'][0]['terrain_kanan'])
-                            {{ $data['data_geometrik_jalan'][0]['terrain_kanan'] }}
+                        @if (isset($data['data_jalan_situasi']["terrain_kanan"]['nilai']) && $data['data_jalan_situasi']["terrain_kanan"]['nilai'])
+                            {{ $data['data_jalan_situasi']["terrain_kanan"]['nilai'] }}
                         @else
                             ---
                         @endif
@@ -4191,10 +4810,8 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">TATA GUNA LAHAN KIRI</td>
                     <td>
-                        @if (isset($data['data_geometrik_jalan'][0]['tataguna_lahan_kiri']) &&
-                                $data['data_geometrik_jalan'][0]['tataguna_lahan_kiri']
-                        )
-                            {{ $data['data_geometrik_jalan'][0]['tataguna_lahan_kiri'] }}
+                        @if (isset($data['data_jalan_situasi']["tataguna_lahan_kiri"]['nilai']) && $data['data_jalan_situasi']["tataguna_lahan_kiri"]['nilai'])
+                            {{ $data['data_jalan_situasi']["tataguna_lahan_kiri"]['nilai'] }}
                         @else
                             ---
                         @endif
@@ -4204,10 +4821,8 @@
                 <tr>
                     <td style="border-right: 0.1px solid black;">TATA GUNA LAHAN KANAN</td>
                     <td>
-                        @if (isset($data['data_geometrik_jalan'][0]['tataguna_lahan_kanan']) &&
-                                $data['data_geometrik_jalan'][0]['tataguna_lahan_kanan']
-                        )
-                            {{ $data['data_geometrik_jalan'][0]['tataguna_lahan_kanan'] }}
+                        @if (isset($data['data_jalan_situasi']["tataguna_lahan_kanan"]['nilai']) && $data['data_jalan_situasi']["tataguna_lahan_kanan"]['nilai'])
+                            {{ $data['data_jalan_situasi']["tataguna_lahan_kanan"]['nilai'] }}
                         @else
                             ---
                         @endif
@@ -4315,4 +4930,5 @@
         </table>
     </div>
 </body>
+
 </html>

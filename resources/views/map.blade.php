@@ -23,7 +23,7 @@
                 <h3 class="card-title">Data Spasial</h3>
             </div>
             <div class="card-body">
-                <div id="admin-map"></div>
+                <div id="admin-map" data-route="{{ route('admin.leger.jalanUtama.generate') }}"></div>
             </div>
         </div>
         <div class="card">
@@ -113,19 +113,7 @@
                 </div> -->
             </div>
         </div>
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Data Jalan Utama</h3>
-                <div class="card-tools">
-                    <form action="{{ route('admin.map.jalan_utama') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-info btn-sm">
-                            Download
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
+
     </section>
 @endsection
 

@@ -1,4 +1,6 @@
 var url_api = "http://117.53.47.111:91/api/data/aset/";
+var url_api = "http://127.0.0.1:8000/api/data/aset/";
+var segmen_api = "http://127.0.0.1:8000/api/data/segmen/";
 var url_icon = location.origin + "/img/map-icons/";
 
 function getAdministratifPolygonLayer() {
@@ -8,11 +10,10 @@ function getAdministratifPolygonLayer() {
                 weight: 1,
                 color: "black",
                 fillOpacity: 1,
-                fillColor: "#478CCF"
-            }
-        }
-    })
-    .bindPopup(function (layer) {
+                fillColor: "#478CCF",
+            };
+        },
+    }).bindPopup(function (layer) {
         return `<div class="custom-map-popup">
                     <div class="popup-header">Administratif</div>
                     <div class="popup-body">
@@ -32,11 +33,12 @@ function getDataGeometrikJalanPolygonLayer() {
                 weight: 1,
                 color: "black",
                 fillOpacity: 1,
-                fillColor: getDataGeometrikJalanColor(feature.properties.segmen_tol)
-            }
-        }
-    })
-    .bindPopup(function (layer) {
+                fillColor: getDataGeometrikJalanColor(
+                    feature.properties.segmen_tol
+                ),
+            };
+        },
+    }).bindPopup(function (layer) {
         return `<div class="custom-map-popup">
                     <div class="popup-header">Data Geometrik Jalan</div>
                     <div class="popup-body">
@@ -118,23 +120,34 @@ function getIRIPolygonLayer() {
                 weight: 1,
                 color: "black",
                 fillOpacity: 1,
-                fillColor: getIRIColor(feature.properties.nilai_iri)
-            }
-        }
-    })
-    .bindPopup(function (layer) {
+                fillColor: getIRIColor(feature.properties.nilai_iri),
+            };
+        },
+    }).bindPopup(function (layer) {
         return `<div class="custom-map-popup">
                     <div class="popup-header text-center">
                         ${layer.feature.properties.sgm_tol}
-                        ${layer.feature.properties.km !== "-" ? "<br/> KM " + layer.feature.properties.km : ""}
+                        ${
+                            layer.feature.properties.km !== "-"
+                                ? "<br/> KM " + layer.feature.properties.km
+                                : ""
+                        }
                     </div>
                     <div class="popup-body">
-                        <div class="mb-1"><span class="font-weight-bold">Jalur</span>: ${layer.feature.properties.jalur}</div>
-                        <div class="mb-1"><span class="font-weight-bold">Bagian Jalan</span>: ${layer.feature.properties.bagian_jalan}</div>
-                        <div class="mb-1"><span class="font-weight-bold">Lebar</span>: ${layer.feature.properties.lebar}</div>
+                        <div class="mb-1"><span class="font-weight-bold">Jalur</span>: ${
+                            layer.feature.properties.jalur
+                        }</div>
+                        <div class="mb-1"><span class="font-weight-bold">Bagian Jalan</span>: ${
+                            layer.feature.properties.bagian_jalan
+                        }</div>
+                        <div class="mb-1"><span class="font-weight-bold">Lebar</span>: ${
+                            layer.feature.properties.lebar
+                        }</div>
                         <div class="mb-1">
                             <div class="font-weight-bold mb-1">Nilai IRI:</div> 
-                            <h3 class="text-center font-weight-bold border mb-0">${layer.feature.properties.nilai_iri}</h3>
+                            <h3 class="text-center font-weight-bold border mb-0">${
+                                layer.feature.properties.nilai_iri
+                            }</h3>
                         </div>
                     </div>
                 </div>`;
@@ -145,9 +158,15 @@ function getIRIPolygonLayer() {
 // IRI < 4: Baik
 // IRI 4-8: Sedang
 // IRI 8-12: Rusak Ringan
-// IRI > 12: Rusak Berat 
+// IRI > 12: Rusak Berat
 function getIRIColor(data) {
-    return data > 12 ? "#dc3545" : data > 8 ? "#fd7e14" : data > 4 ? "#ffc107" : "#198754";
+    return data > 12
+        ? "#dc3545"
+        : data > 8
+        ? "#fd7e14"
+        : data > 4
+        ? "#ffc107"
+        : "#198754";
 }
 
 function getJembatanPolygonLayer() {
@@ -157,11 +176,10 @@ function getJembatanPolygonLayer() {
                 weight: 1,
                 color: "black",
                 fillOpacity: 1,
-                fillColor: "#EB5B00"
-            }
-        }
-    })
-    .bindPopup(function (layer) {
+                fillColor: "#EB5B00",
+            };
+        },
+    }).bindPopup(function (layer) {
         return `<div class="custom-map-popup">
                     <div class="popup-header">Jembatan</div>
                     <div class="popup-body">
@@ -182,11 +200,10 @@ function getLapisPermukaanPolygonLayer() {
                 weight: 1,
                 color: "black",
                 fillOpacity: 1,
-                fillColor: getLapisPermukaanColor(feature.properties.jenis)
-            }
-        }
-    })
-    .bindPopup(function (layer) {
+                fillColor: getLapisPermukaanColor(feature.properties.jenis),
+            };
+        },
+    }).bindPopup(function (layer) {
         return `<div class="custom-map-popup">
                     <div class="popup-header">Lapis Permukaan</div>
                     <div class="popup-body">
@@ -217,11 +234,10 @@ function getLapisPondasiAtas1PolygonLayer() {
                 weight: 1,
                 color: "black",
                 fillOpacity: 1,
-                fillColor: getLapisPondasiAtas1Color(feature.properties.jenis)
-            }
-        }
-    })
-    .bindPopup(function (layer) {
+                fillColor: getLapisPondasiAtas1Color(feature.properties.jenis),
+            };
+        },
+    }).bindPopup(function (layer) {
         return `<div class="custom-map-popup">
                     <div class="popup-header">Lapis Pondasi Atas 1</div>
                     <div class="popup-body">
@@ -252,11 +268,10 @@ function getLapisPondasiAtas2PolygonLayer() {
                 weight: 1,
                 color: "black",
                 fillOpacity: 1,
-                fillColor: getLapisPondasiAtas2Color(feature.properties.jenis)
-            }
-        }
-    })
-    .bindPopup(function (layer) {
+                fillColor: getLapisPondasiAtas2Color(feature.properties.jenis),
+            };
+        },
+    }).bindPopup(function (layer) {
         return `<div class="custom-map-popup">
                     <div class="popup-header">Lapis Pondasi Atas 2</div>
                     <div class="popup-body">
@@ -287,11 +302,10 @@ function getLapisPondasiBawahPolygonLayer() {
                 weight: 1,
                 color: "black",
                 fillOpacity: 1,
-                fillColor: getLapisPondasiBawahColor(feature.properties.jenis)
-            }
-        }
-    })
-    .bindPopup(function (layer) {
+                fillColor: getLapisPondasiBawahColor(feature.properties.jenis),
+            };
+        },
+    }).bindPopup(function (layer) {
         return `<div class="custom-map-popup">
                     <div class="popup-header">Lapis Pondasi Bawah</div>
                     <div class="popup-body">
@@ -322,11 +336,10 @@ function getLHRPolygonLayer() {
                 weight: 1,
                 color: "black",
                 fillOpacity: 1,
-                fillColor: "#007F73"
-            }
-        }
-    })
-    .bindPopup(function (layer) {
+                fillColor: "#007F73",
+            };
+        },
+    }).bindPopup(function (layer) {
         return `<div class="custom-map-popup">
                     <div class="popup-header text-center">Lintas Harian Rata-Rata</div>
                     <div class="popup-body">
@@ -371,11 +384,10 @@ function getRuwasjaPolygonLayer() {
                 weight: 1,
                 color: "black",
                 fillOpacity: 1,
-                fillColor: "#FFDE4D"
-            }
-        }
-    })
-    .bindPopup(function (layer) {
+                fillColor: "#FFDE4D",
+            };
+        },
+    }).bindPopup(function (layer) {
         return `<div class="custom-map-popup">
                     <div class="popup-header">Ruwasja</div>
                     <div class="popup-body">
@@ -392,11 +404,12 @@ function getSegmenKonstruksiPolygonLayer() {
                 weight: 1,
                 color: "black",
                 fillOpacity: 1,
-                fillColor: getSegmenKonstruksiColor(feature.properties.bagian_jalan)
-            }
-        }
-    })
-    .bindPopup(function (layer) {
+                fillColor: getSegmenKonstruksiColor(
+                    feature.properties.bagian_jalan
+                ),
+            };
+        },
+    }).bindPopup(function (layer) {
         return `<div class="custom-map-popup">
                     <div class="popup-header">Segmen Konstruksi</div>
                     <div class="popup-body">
@@ -426,6 +439,9 @@ function getSegmenKonstruksiColor(data) {
     }
 }
 
+const legerRoute = document.getElementById('admin-map').getAttribute('data-route');
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
 function getSegmenLegerPolygonLayer() {
     return new L.GeoJSON.AJAX(url_api + "segmen_leger_polygon", {
         style: function (feature) {
@@ -433,11 +449,41 @@ function getSegmenLegerPolygonLayer() {
                 weight: 1,
                 color: "black",
                 fillOpacity: 1,
-                fillColor: getSegmenLegerColor(feature.properties.id_leger)
-            }
-        }
-    })
-    .bindPopup(function (layer) {
+                fillColor: getSegmenLegerColor(feature.properties.id_leger),
+            };
+        },
+    }).bindPopup(function (layer) {
+        return `<div class="custom-map-popup">
+                    <div class="popup-header">Segmen Leger</div>
+                    <div class="popup-body">
+                        <div class="mb-1"><span class="font-weight-bold">ID Leger</span>: ${layer.feature.properties.id_leger}</div>
+                        <div class="mb-1"><span class="font-weight-bold">Lokasi</span>: KM ${layer.feature.properties.km}</div>
+                        <div class="mb-1"><span class="font-weight-bold">Download</span>:
+                        <form action="${legerRoute}" method="POST" target="_blank">
+                                <input type="hidden" name="_token" value="${csrfToken}">
+                                <input type="hidden" id="leger_id_awal" name="leger_id_awal" value="${layer.feature.properties.id_leger}">
+                                <input type="hidden" id="leger_id_akhir" name="leger_id_akhir" value="${layer.feature.properties.id_leger}">
+                                <button type="submit" class="btn btn-info btn-sm">
+                                    Download
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>`;
+    });
+}
+
+function getSegmenLegerPolygonSelectionLayer(awal, akhir) {
+    return new L.GeoJSON.AJAX(segmen_api + awal + "/" + akhir, {
+        style: function (feature) {
+            return {
+                weight: 1,
+                color: "black",
+                fillOpacity: 1,
+                fillColor: getSegmenLegerColor(feature.properties.id_leger),
+            };
+        },
+    }).bindPopup(function (layer) {
         return `<div class="custom-map-popup">
                     <div class="popup-header">Segmen Leger</div>
                     <div class="popup-body">
@@ -469,11 +515,10 @@ function getSegmenPerlengkapanPolygonLayer() {
                 weight: 1,
                 color: "black",
                 fillOpacity: 1,
-                fillColor: getSegmenPerlengkapanColor(feature.properties.jalur)
-            }
-        }
-    })
-    .bindPopup(function (layer) {
+                fillColor: getSegmenPerlengkapanColor(feature.properties.jalur),
+            };
+        },
+    }).bindPopup(function (layer) {
         return `<div class="custom-map-popup">
                     <div class="popup-header">Segmen Perlengkapan</div>
                     <div class="popup-body">
@@ -503,11 +548,10 @@ function getSegmenTolPolygonLayer() {
                 weight: 1,
                 color: "black",
                 fillOpacity: 1,
-                fillColor: getSegmenTolColor(feature.properties.segmen_tol)
-            }
-        }
-    })
-    .bindPopup(function (layer) {
+                fillColor: getSegmenTolColor(feature.properties.segmen_tol),
+            };
+        },
+    }).bindPopup(function (layer) {
         return `<div class="custom-map-popup">
                     <div class="popup-header">${layer.feature.properties.segmen_tol}</div>
                     <div class="popup-body">
@@ -532,222 +576,222 @@ function getSegmenTolColor(data) {
 
 function getLampuLalulintasPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "lampu_lalulintas_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "lampu.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getManholePointLayer() {
     return new L.GeoJSON.AJAX(url_api + "manhole_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "manhole.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getGerbangPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "gerbang_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "gerbang.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getPatokHMPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "patok_hm_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "patok_hm.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getPatokKMPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "patok_km_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "patok_km.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getPatokLJPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "patok_lj_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "patok_lj.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getPatokRMJPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "patok_rmj_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "patok_rmj.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getPatokROWPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "patok_row_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "patok_row.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getPatokPemanduPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "patok_pemandu_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "patok_pemandu.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getReflektorPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "reflektor_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "reflektor.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getRambuLalulintasPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "rambu_lalulintas_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "rambu_lalu_lintas.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getRambuPenunjukarahPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "rambu_penunjukarah_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "rambu_penunjuk_arah.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getRumahKabelPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "rumah_kabel_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "rumah_kabel.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getStaTextPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "sta_text_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "sta_text.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getTiangListrikPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "tiang_listrik_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "listrik.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getTiangTeleponPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "tiang_telepon_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "telepon.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 
 function getVMSPointLayer() {
     return new L.GeoJSON.AJAX(url_api + "vms_point", {
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "vms.png",
                     iconSize: [32, 32],
-                })
+                }),
             });
-        }
+        },
     });
 }
 

@@ -32,11 +32,31 @@
                         <p>Map</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.leger') }}" class="nav-link {{ Request::is('leger') ? 'active' : '' }}">
+
+                <li class="nav-item has-treeview {{ Request::is('leger*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ Request::is('leger*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-road"></i>
-                        <p>Leger</p>
+                        <p>
+                            Leger
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.leger.jalanUtama.view.select') }}" class="nav-link {{ Request::is('leger') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Cetak Leger</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.leger.jalanUtama.edit.select') }}" class="nav-link {{ Request::is('leger/edit') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Detail Leger</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+
                 <li class="nav-item has-treeview {{ Request::is('input*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ Request::is('input*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-upload"></i>
