@@ -1,421 +1,455 @@
 @extends('layouts/app')
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Map</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Map</li>
-                    </ol>
-                </div>
-            </div>
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Map</h1>
         </div>
-    </section>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+            <li class="breadcrumb-item active">Map</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header bg-primary text-white text-center">
+        <h3 class="card-title mb-0">Filter Assets by Distance</h3>
+      </div>
+      <div class="card-body d-flex justify-content-center">
+        <div class="d-flex flex-wrap align-items-center justify-content-center gap-3 w-100">
+          <div class="form-group mx-3">
+            <label for="start-km" class="d-block">Start KM:</label>
+            <select class="form-control select2" id="start-km" name="start-km" style="width:150px"></select>
+          </div>
+          <div class="form-group mx-3">
+            <label for="end-km" class="d-block">End KM:</label>
+            <select class="form-control select2" id="end-km" name="end-km" style="width:150px"></select>
+          </div>
+          <div class="text-center mx-3">
+            <button id="apply-filter-button" class="btn btn-primary">Apply Filter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <section class="content">
-        <div class="card mb-4">
-            <div class="card-header">
-                <h3 class="card-title">Data Spasial</h3>
-            </div>
-            <div class="card-body">
-                <div id="admin-map" data-route="{{ route('admin.leger.jalanUtama.generate') }}"></div>
-            </div>
+      <div class="card mb-4">
+        <div class="card-header">
+          <h3 class="card-title">Data Spasial</h3>
         </div>
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Data Leger</h3>
-                <div class="card-tools">
-                    <form action="{{ route('admin.map.download') }}" method="POST">
-                        @csrf
-                        <input type="hidden" id="kode_leger_form" name="kode_leger" value="">
-                        <input type="hidden" id="kode_administratif_form" name="kode_administratif" value="">
-                        <input type="hidden" id="nomor_ruas_form" name="nomor_ruas" value="">
-                        <input type="hidden" id="segmen_awal_form" name="segmen_awal" value="">
-                        <input type="hidden" id="segmen_akhir_form" name="segmen_akhir" value="">
-                        <button type="submit" class="btn btn-info btn-sm">
-                            Download
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <div class="card-body">
-                <h6 class="font-weight-bold mb-1">IDENTIFIKASI</h6>
-                <table class="table w-50 mx-auto mb-4">
-                    <tr>
-                        <td>Nomor Kartu Leger Jalan</td>
-                        <td id="kode_leger_view" class="text-right">-</td>
-                    </tr>
-                    <tr>
-                        <td>Nomor Kode dan Nama</td>
-                        <td id="kode_administratif_view" class="text-right">-</td>
-                    </tr>
-                    <tr>
-                        <td>Nomor Ruas Jalan / Seksi</td>
-                        <td id="nomor_ruas_view" class="text-right">-</td>
-                    </tr>
-                    <tr>
-                        <td>Titik Awal Segmen Jalan</td>
-                        <td id="segmen_awal_view" class="text-right">-</td>
-                    </tr>
-                    <tr>
-                        <td>Titik Akhir Segmen Jalan</td>
-                        <td id="segmen_akhir_view" class="text-right">-</td>
-                    </tr>
-                </table>
-                <!-- <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link active" id="pills-data-teknik-1-tab" data-toggle="pill" data-target="#pills-data-teknik-1" type="button" role="tab" aria-controls="pills-data-teknik-1" aria-selected="true">Data Teknik 1</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-data-teknik-2-tab" data-toggle="pill" data-target="#pills-data-teknik-2" type="button" role="tab" aria-controls="pills-data-teknik-2" aria-selected="false">Data Teknik 2</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-data-teknik-3-tab" data-toggle="pill" data-target="#pills-data-teknik-3" type="button" role="tab" aria-controls="pills-data-teknik-3" aria-selected="false">Data Teknik 3</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-data-teknik-4-tab" data-toggle="pill" data-target="#pills-data-teknik-4" type="button" role="tab" aria-controls="pills-data-teknik-4" aria-selected="false">Data Teknik 4</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-data-teknik-5-tab" data-toggle="pill" data-target="#pills-data-teknik-5" type="button" role="tab" aria-controls="pills-data-teknik-5" aria-selected="false">Data Teknik 5</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-data-lainnya-tab" data-toggle="pill" data-target="#pills-data-lainnya" type="button" role="tab" aria-controls="pills-data-lainnya" aria-selected="false">Data Lainnya</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-lintasan-harian-tab" data-toggle="pill" data-target="#pills-lintasan-harian" type="button" role="tab" aria-controls="pills-lintasan-harian" aria-selected="false">Lintasan Harian</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-data-geometrik-tab" data-toggle="pill" data-target="#pills-data-geometrik" type="button" role="tab" aria-controls="pills-data-geometrik" aria-selected="false">Data Geometrik</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-data-lingkungan-jalan-tab" data-toggle="pill" data-target="#pills-data-lingkungan-jalan" type="button" role="tab" aria-controls="pills-data-lingkungan-jalan" aria-selected="false">Data Lingkungan Jalan</button>
-                    </li>
-                    <li class="nav-item mr-1" role="presentation">
-                        <button class="nav-link" id="pills-legalisasi-tab" data-toggle="pill" data-target="#pills-legalisasi" type="button" role="tab" aria-controls="pills-legalisasi" aria-selected="false">Legalisasi</button>
-                    </li>
-                </ul>
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-data-teknik-1" role="tabpanel" aria-labelledby="pills-data-teknik-1-tab">...</div>
-                    <div class="tab-pane fade" id="pills-data-teknik-2" role="tabpanel" aria-labelledby="pills-data-teknik-2-tab">...</div>
-                    <div class="tab-pane fade" id="pills-data-teknik-3" role="tabpanel" aria-labelledby="pills-data-teknik-3-tab">...</div>
-                    <div class="tab-pane fade" id="pills-data-teknik-4" role="tabpanel" aria-labelledby="pills-data-teknik-4-tab">...</div>
-                    <div class="tab-pane fade" id="pills-data-teknik-5" role="tabpanel" aria-labelledby="pills-data-teknik-5-tab">...</div>
-                    <div class="tab-pane fade" id="pills-data-lainnya" role="tabpanel" aria-labelledby="pills-data-lainnya-tab">...</div>
-                    <div class="tab-pane fade" id="pills-lintasan-harian" role="tabpanel" aria-labelledby="pills-lintasan-harian-tab">...</div>
-                    <div class="tab-pane fade" id="pills-data-geometrik" role="tabpanel" aria-labelledby="pills-data-geometrik-tab">...</div>
-                    <div class="tab-pane fade" id="pills-data-lingkungan-jalan" role="tabpanel" aria-labelledby="pills-data-lingkungan-jalan-tab">...</div>
-                    <div class="tab-pane fade" id="pills-legalisasi" role="tabpanel" aria-labelledby="pills-legalisasi-tab">...</div>
-                </div> -->
-            </div>
+        <div class="card-body">
+          <div id="admin-map" data-route="{{ route('admin.leger.jalanUtama.generate') }}" style="height: 600px"></div>
         </div>
-
+      </div>
     </section>
-@endsection
+  @endsection
+  @push('styles')
+    <style>
+      .custom-select-border {
+        border: 2px solid #007bff;
+        border-radius: 4px;
+        padding: 5px;
+        background-color: #fff;
+      }
 
-@push('scripts')
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script> -->
+      .select2-selection__clear {
+        display: none !important;
+      }
+    </style>
+  @endpush
+
+  @push('scripts')
     <script src="{{ asset('js/map-layer.js') }}"></script>
     <script>
-        // Basemap
-        var osm_map = L.tileLayer.provider('OpenStreetMap.Mapnik');
+      $(function () {
+          $('.select2').select2({
+              theme: 'bootstrap4'
+          });
+      });
+      
+      const baseGroupMapsConfig = [{
+          name: "Ruwasja",
+          layer: "getRuwasjaPolygonLayer",
+          legendKey: null
+        },
+        {
+          name: "Administratif",
+          layer: "getAdministratifPolygonLayer",
+          legendKey: null
+        },
+        {
+          name: "Data Geometrik Jalan",
+          layer: "getDataGeometrikJalanPolygonLayer",
+          legendKey: "dataGeometrikJalan"
+        },
+        {
+          name: "LHR",
+          layer: "getLHRPolygonLayer",
+          legendKey: null
+        },
+        {
+          name: "IRI",
+          layer: "getIRIPolygonLayer",
+          legendKey: "iri"
+        },
+        {
+          name: "Segmen Tol",
+          layer: "getSegmenTolPolygonLayer",
+          legendKey: "segmenTol"
+        },
+        {
+          name: "Segmen Leger",
+          layer: "getSegmenLegerPolygonLayer",
+          legendKey: "segmenLeger"
+        },
+        {
+          name: "Segmen Perlengkapan",
+          layer: "getSegmenPerlengkapanPolygonLayer",
+          legendKey: "segmenPerlengkapan"
+        },
+        {
+          name: "Segmen Konstruksi",
+          layer: "getSegmenKonstruksiPolygonLayer",
+          legendKey: "segmenKonstruksi"
+        },
+        {
+          name: "Lapis Permukaan",
+          layer: "getLapisPermukaanPolygonLayer",
+          legendKey: "lapisPermukaan"
+        },
+        {
+          name: "Lapis Pondasi Atas 1",
+          layer: "getLapisPondasiAtas1PolygonLayer",
+          legendKey: "lapisPondasiAtas1"
+        },
+        {
+          name: "Lapis Pondasi Atas 2",
+          layer: "getLapisPondasiAtas2PolygonLayer",
+          legendKey: "lapisPondasiAtas2"
+        },
+        {
+          name: "Lapis Pondasi Bawah",
+          layer: "getLapisPondasiBawahPolygonLayer",
+          legendKey: "lapisPondasiBawah"
+        },
+      ];
+      const overlayMapsConfig = [
+        // { name: "Jembatan", layer: "getJembatanPolygonLayer" },
+        // { name: "Lampu Lalu Lintas", layer: "getLampuLalulintasPointLayer" },
+        // { name: "Manhole", layer: "getManholePointLayer" },
+        // { name: "Gerbang", layer: "getGerbangPointLayer" },
+        // { name: "Patok HM", layer: "getPatokHMPointLayer" },
+        {
+          name: "Patok KM",
+          layer: "getPatokKMPointLayer"
+        },
+        // { name: "Patok LJ", layer: "getPatokLJPointLayer" },
+        // { name: "Patok RMJ", layer: "getPatokRMJPointLayer" },
+        // { name: "Patok ROW", layer: "getPatokROWPointLayer" },
+        // { name: "Patok Pemandu", layer: "getPatokPemanduPointLayer" },
+        // { name: "Reflektor", layer: "getReflektorPointLayer" },
+        // { name: "Rambu Lalu Lintas", layer: "getRambuLalulintasPointLayer" },
+        // { name: "Rambu Penunjuk Arah", layer: "getRambuPenunjukarahPointLayer" },
+        // { name: "Rumah Kabel", layer: "getRumahKabelPointLayer" },
+        // { name: "STA Text", layer: "getStaTextPointLayer" },
+        // { name: "Tiang Listrik", layer: "getTiangListrikPointLayer" },
+        // { name: "Tiang Telepon", layer: "getTiangTeleponPointLayer" },
+        // { name: "VMS", layer: "getVMSPointLayer" },
+        // { name: "Batas Desa", layer: "getBatasDesaLineLayer" },
+        // { name: "Box Culvert", layer: "getBoxCulvertLineLayer" },
+        // { name: "Bangunan Penahan Tanah", layer: "getBPTLineLayer" },
+        // { name: "Bronjong", layer: "getBronjongLineLayer" },
+        // { name: "Concrete Barrier", layer: "getConcreteBarrierLineLayer" },
+        // { name: "Gorong Gorong", layer: "getGorongGorongLineLayer" },
+        // { name: "Guardrail", layer: "getGuardrailLineLayer" },
+        // { name: "Jalan", layer: "getJalanLineLayer" },
+        // { name: "Listrik Bawah Tanah", layer: "getListrikBawahtanahLineLayer" },
+        // { name: "Marka", layer: "getMarkaLineLayer" },
+        // { name: "Pagar Operasional", layer: "getPagarOperasionalLineLayer" },
+        // { name: "Pita Kejut", layer: "getPitaKejutLineLayer" },
+        // { name: "Riol", layer: "getRiolLineLayer" },
+        // { name: "Saluran", layer: "getSaluranLineLayer" },
+        // { name: "Sungai", layer: "getSungaiLineLayer" },
+        // { name: "Telepon Bawah Tanah", layer: "getTeleponBawahtanahLineLayer" },
+      ];
 
-        // Aset Layer Polygon
-        var administratifPolygonLayer = getAdministratifPolygonLayer();
-        var dataGeometrikJalanPolygonLayer = getDataGeometrikJalanPolygonLayer();
-        var iriPolygonLayer = getIRIPolygonLayer();
-        var jembatanPolygonLayer = getJembatanPolygonLayer();
-        var lapisPermukaanPolygonLayer = getLapisPermukaanPolygonLayer();
-        var lapisPondasiAtas1PolygonLayer = getLapisPondasiAtas1PolygonLayer();
-        var lapisPondasiAtas2PolygonLayer = getLapisPondasiAtas2PolygonLayer();
-        var lapisPondasiBawahPolygonLayer = getLapisPondasiBawahPolygonLayer();
-        var lhrPolygonLayer = getLHRPolygonLayer();
-        var ruwasjaPolygonLayer = getRuwasjaPolygonLayer();
-        var segmenKonstruksiPolygonLayer = getSegmenKonstruksiPolygonLayer();
-        var segmenLegerPolygonLayer = getSegmenLegerPolygonLayer();
-        var segmenPerlengkapanPolygonLayer = getSegmenPerlengkapanPolygonLayer();
-        var segmenTolPolygonLayer = getSegmenTolPolygonLayer();
+      // Dynamically create layer group objects
+      const baseGroupMaps = baseGroupMapsConfig.reduce((acc, {
+        name,
+        layer,
+      }) => {
+        acc[name] = window[layer](""); // Dynamically call the layer function
+        return acc;
+      }, {});
 
-        // Aset Layer Point
-        var lampuLalulintasPointLayer = getLampuLalulintasPointLayer();
-        var manholePointLayer = getManholePointLayer();
-        var gerbangPointLayer = getGerbangPointLayer();
-        var patokHMPointLayer = getPatokHMPointLayer();
-        var patokKMPointLayer = getPatokKMPointLayer();
-        var patokLJPointLayer = getPatokLJPointLayer();
-        var patokRMJPointLayer = getPatokRMJPointLayer();
-        var patokROWPointLayer = getPatokROWPointLayer();
-        var patokPemanduPointLayer = getPatokPemanduPointLayer();
-        var reflektorPointLayer = getReflektorPointLayer();
-        var rambuLalulintasPointLayer = getRambuLalulintasPointLayer();
-        var rambuPenunjukarahPointLayer = getRambuPenunjukarahPointLayer();
-        var rumahKabelPointLayer = getRumahKabelPointLayer();
-        var staTextPointLayer = getStaTextPointLayer();
-        var tiangListrikPointLayer = getTiangListrikPointLayer();
-        var tiangTeleponPointLayer = getTiangTeleponPointLayer();
-        var vmsPointLayer = getVMSPointLayer();
-        
-        // Aset Layer Line
-        var batasDesaLineLayer = getBatasDesaLineLayer();
-        var boxCulvertLineLayer = getBoxCulvertLineLayer();
-        var bptLineLayer = getBPTLineLayer();
-        var bronjongLineLayer = getBronjongLineLayer();
-        var concreteBarrierLineLayer = getConcreteBarrierLineLayer();
-        var gorongGorongLineLayer = getGorongGorongLineLayer();
-        var guardrailLineLayer = getGuardrailLineLayer();
-        var jalanLineLayer = getJalanLineLayer();
-        var listrikBawahtanahLineLayer = getListrikBawahtanahLineLayer();
-        var markaLineLayer = getMarkaLineLayer();
-        var pagarOperasionalLineLayer = getPagarOperasionalLineLayer();
-        var pitaKejutLineLayer = getPitaKejutLineLayer();
-        var riolLineLayer = getRiolLineLayer();
-        var saluranLineLayer = getSaluranLineLayer();
-        var sungaiLineLayer = getSungaiLineLayer();
-        var teleponBawahtanahLineLayer = getTeleponBawahtanahLineLayer();
+      const overlayMaps = overlayMapsConfig.reduce((acc, {
+        name,
+        layer
+      }) => {
+        acc[name] = window[layer](""); // Dynamically call the layer function
+        return acc;
+      }, {});
 
-        // Set Layer Options
-        var baseGroupMaps = {
-            "Ruwasja": ruwasjaPolygonLayer,
-            "Administratif": administratifPolygonLayer,
-            "Data Geometrik Jalan": dataGeometrikJalanPolygonLayer,
-            "LHR": lhrPolygonLayer,
-            "IRI": iriPolygonLayer,
-            "Segmen Tol": segmenTolPolygonLayer,
-            "Segmen Leger": segmenLegerPolygonLayer,
-            "Segmen Perlengkapan": segmenPerlengkapanPolygonLayer,
-            "Segmen Konstruksi": segmenKonstruksiPolygonLayer,
-            "Lapis Permukaan": lapisPermukaanPolygonLayer,
-            "Lapis Pondasi Atas 1": lapisPondasiAtas1PolygonLayer,
-            "Lapis Pondasi Atas 2": lapisPondasiAtas2PolygonLayer,
-            "Lapis Pondasi Bawah": lapisPondasiBawahPolygonLayer,
+      // Map initialization
+      const osm_map = L.tileLayer.provider('OpenStreetMap.Mapnik');
+      const map = L.map('admin-map', {
+        center: [-4.881600, 105.230373],
+        zoom: 16,
+        layers: [osm_map, baseGroupMaps["Data Geometrik Jalan"]],
+      });
+
+      const layerGroup = L.layerGroup().addTo(map);
+
+      function removeAllLayers() {
+        // Hapus semua base layers dari peta
+        Object.values(baseGroupMaps).forEach(layer => {
+          if (layer && map.hasLayer(layer)) {
+            map.removeLayer(layer);
+          }
+        });
+
+        // Hapus semua overlay layers dari peta
+        Object.values(overlayMaps).forEach(layer => {
+          if (layer && map.hasLayer(layer)) {
+            map.removeLayer(layer);
+          }
+        });
+
+        // Bersihkan layer group sementara
+        layerGroup.clearLayers();
+      }
+
+      let layerControl; // Variabel untuk menyimpan kontrol lapisan
+
+      function initializeLayerControl() {
+        // Inisialisasi kontrol lapisan saat peta pertama kali dimuat
+        layerControl = L.control.layers(baseGroupMaps, overlayMaps).addTo(map);
+      }
+
+      function updateMapLayers() {
+        const start_km = document.getElementById('start-km').value;
+        const end_km = document.getElementById('end-km').value;
+
+        if (!start_km || !end_km) {
+          alert("Silakan pilih rentang KM sebelum menerapkan filter.");
+          return;
+        }
+        const activeBaseLayers = Object.keys(baseGroupMaps).filter(name => map.hasLayer(baseGroupMaps[name]));
+        const activeOverlayLayers = Object.keys(overlayMaps).filter(name => map.hasLayer(overlayMaps[name]));
+        // Hapus semua layer dari peta
+        removeAllLayers();
+
+        const newBaseGroupMaps = {};
+        const newOverlayMaps = {};
+
+        // Perbarui base layers
+        baseGroupMapsConfig.forEach(({
+          name,
+          layer
+        }) => {
+          const layerFunction = window[layer];
+          if (typeof layerFunction === 'function') {
+            const filteredLayer = layerFunction(start_km, end_km); // Ambil data dari API
+            newBaseGroupMaps[name] = filteredLayer;
+            // Tambahkan layer ke peta jika sebelumnya aktif
+            if (activeBaseLayers.includes(name)) {
+              map.addLayer(filteredLayer);
+            }
+          }
+        });
+
+        // Perbarui overlay layers
+        overlayMapsConfig.forEach(({
+          name,
+          layer
+        }) => {
+          const layerFunction = window[layer];
+          if (typeof layerFunction === 'function') {
+            const filteredLayer = layerFunction(start_km, end_km); // Ambil data dari API
+            newOverlayMaps[name] = filteredLayer;
+            if (activeOverlayLayers.includes(name)) {
+              map.addLayer(filteredLayer);
+            }
+          }
+        });
+        // Perbarui baseGroupMaps dan overlayMaps dengan layer baru
+        Object.keys(baseGroupMaps).forEach(name => {
+          baseGroupMaps[name] = newBaseGroupMaps[name];
+        });
+
+        Object.keys(overlayMaps).forEach(name => {
+          overlayMaps[name] = newOverlayMaps[name];
+        });
+        // Perbarui kontrol lapisan tanpa membuat kontrol baru
+        if (layerControl) {
+          layerControl.remove(); // Hapus kontrol lapisan lama dari peta
+        }
+        layerControl = L.control.layers(baseGroupMaps, overlayMaps).addTo(map);
+
+        console.log("Layers updated with filtered data and layer control refreshed.");
+      }
+
+      initializeLayerControl();
+
+      document.getElementById('apply-filter-button').addEventListener('click', function() {
+        updateMapLayers();
+      });
+
+      const legendsConfig = {
+        dataGeometrikJalan: {
+          categories: ["Mainroad", "Ramp", "Akses"],
+          colors: ["#4793AF", "#FFC470", "#DD5746"],
+        },
+        iri: {
+          categories: ["Baik (< 4)", "Sedang (4-8)", "Rusak Ringan (8-12)", "Rusak Berat (> 12)"],
+          colors: ["#198754", "#ffc107", "#fd7e14", "#dc3545"],
+        },
+        segmenLeger: {
+          categories: ["Mainroad", "Ramp", "Akses"],
+          colors: ["#4793AF", "#FFC470", "#DD5746"],
+        },
+        segmenTol: {
+          categories: ["Mainroad", "Ramp", "Akses"],
+          colors: ["#4793AF", "#FFC470", "#DD5746"],
+        },
+        segmenPerlengkapan: {
+          categories: ["Jalur Kanan", "Jalur Kiri", "Median"],
+          colors: ["#008DDA", "#FF204E", "#FFF455"],
+        },
+        segmenKonstruksi: {
+          categories: ["Bahu Luar", "Bahu Dalam", "Lajur 1", "Lajur 2", "Lajur Tambahan", "Median"],
+          colors: ["#071952", "#FFB200", "#81A263", "#365E32", "#9CAFAA", "#E4003A"],
+        },
+        lapisPermukaan: {
+          categories: ["Beton", "AC-BC", "MCB"],
+          colors: ["#009FBD", "#4A249D", "#F9E2AF"],
+        },
+        lapisPondasiAtas1: {
+          categories: ["AGG-A", "Jembatan", "Lean Concrete"],
+          colors: ["#124076", "#87A922", "#FAA300"],
+        },
+        lapisPondasiAtas2: {
+          categories: ["AGG-A", "Jembatan", "Box Culvert"],
+          colors: ["#124076", "#87A922", "#EE4266"],
+        },
+        lapisPondasiBawah: {
+          categories: ["Box Culvert", "Jembatan", "Tanah Pilihan"],
+          colors: ["#114232", "#87A922", "#FCDC2A"],
+        },
+      };
+
+      // Fungsi untuk membuat legend berdasarkan konfigurasi
+      function createLegend(position, {
+        categories,
+        colors
+      }) {
+        const legend = L.control({
+          position
+        });
+        legend.onAdd = function() {
+          const div = L.DomUtil.create("div", "custom-legend");
+          div.innerHTML += '<div class="font-weight-bold">Keterangan:</div>';
+          categories.forEach((category, i) => {
+            div.innerHTML += `<div><i style="background: ${colors[i]}"></i> ${category}</div>`;
+          });
+          return div;
         };
-        var overlayMaps = {
-            "Jembatan": jembatanPolygonLayer,
-            "Lampu Lalu Lintas": lampuLalulintasPointLayer,
-            "Manhole": manholePointLayer,
-            "Gerbang": gerbangPointLayer,
-            "Patok HM": patokHMPointLayer,
-            "Patok KM": patokKMPointLayer,
-            "Patok LJ": patokLJPointLayer,
-            "Patok RMJ": patokRMJPointLayer,
-            "Patok ROW": patokROWPointLayer,
-            "Patok Pemandu": patokPemanduPointLayer,
-            "Reflektor": reflektorPointLayer,
-            "Rambu Lalu Lintas": rambuLalulintasPointLayer,
-            "Rambu Penunjuk Arah": rambuPenunjukarahPointLayer,
-            "Rumah Kabel": rumahKabelPointLayer,
-            "STA Text": staTextPointLayer,
-            "Tiang Listrik": tiangListrikPointLayer,
-            "Tiang Telepon": tiangTeleponPointLayer,
-            "VMS": vmsPointLayer,
-            "Batas Desa": batasDesaLineLayer,
-            "Box Culvert": boxCulvertLineLayer,
-            "Bangunan Penahan Tanah": bptLineLayer,
-            "Bronjong": bronjongLineLayer,
-            "Concrete Barrier": concreteBarrierLineLayer,
-            "Gorong Gorong": gorongGorongLineLayer,
-            "Guardrail": guardrailLineLayer,
-            "Jalan": jalanLineLayer,
-            "Listrik Bawah Tanah": listrikBawahtanahLineLayer,
-            "Marka": markaLineLayer,
-            "Pagar Operasional": pagarOperasionalLineLayer,
-            "Pita Kejut": pitaKejutLineLayer,
-            "Riol": riolLineLayer,
-            "Saluran": saluranLineLayer,
-            "Sungai": sungaiLineLayer,
-            "Telepon Bawah Tanah": teleponBawahtanahLineLayer,
-        }
+        return legend;
+      }
 
-        // Init Map
-        var map = L.map('admin-map', {
-            center: [-4.881600, 105.230373],
-            zoom: 16,
-            layers: [osm_map, segmenLegerPolygonLayer]
-        });
-        var mapLayers = L.control.layers(baseGroupMaps, overlayMaps).addTo(map);
-        $('.leaflet-control-layers-base').prepend('<h5 class="text-center font-weight-bold mb-2">Layer Options</h5><div class="leaflet-control-layers-separator"></div>');
-        $('.leaflet-control-layers-overlays').children(':nth-child(18)').after('<div class="leaflet-control-layers-separator"></div>');
+      const legends = Object.keys(legendsConfig).reduce((acc, key) => {
+        acc[key] = createLegend('bottomleft', legendsConfig[key]);
+        return acc;
+      }, {});
 
-        // Create Legend
-        function createLegend(position, categories, colors) {
-            var legend = L.control({ position: position });
-            legend.onAdd = function (map) {
-                var div = L.DomUtil.create('div', 'custom-legend');
-                div.innerHTML += '<div class="font-weight-bold">Keterangan:</div>';
-                for (var i = 0; i < categories.length; i++) {
-                    div.innerHTML += '<div><i style="background: ' + colors[i] + '"></i> ' + categories[i] + '</div>';
-                }
-                return div;
-            };
-            return legend;
-        }
+      function removeAllLegends() {
+        Object.values(legends).forEach(legend => legend.remove(map));
+      }
 
-        // Set Legend
-        var legendDataGeometrikJalan = createLegend('bottomleft', ['Mainroad', 'Ramp', 'Akses'], ['#4793AF', '#FFC470', '#DD5746']);
-        var legendIRI = createLegend('bottomleft', ['Baik (< 4)', 'Sedang (4-8)', 'Rusak Ringan (8-12)', 'Rusak Berat (> 12)'], ['#198754', '#ffc107', '#fd7e14', '#dc3545']);
-        var legendSegmenLeger = createLegend('bottomleft', ['Mainroad', 'Ramp', 'Akses'], ['#4793AF', '#FFC470', '#DD5746']);
-        var legendSegmenTol = createLegend('bottomleft', ['Mainroad', 'Ramp', 'Akses'], ['#4793AF', '#FFC470', '#DD5746']);
-        var legendSegmenPerlengkapan = createLegend('bottomleft', ['Jalur Kanan', 'Jalur Kiri', 'Median'], ['#008DDA', '#FF204E', '#FFF455']);
-        var legendSegmenKonstruksi = createLegend('bottomleft', ['Bahu Luar', 'Bahu Dalam', 'Lajur 1', 'Lajur 2', 'Lajur Tambahan', 'Median'], ['#071952', '#FFB200', '#81A263', '#365E32', '#9CAFAA', '#E4003A']);
-        var legendLapisPermukaan = createLegend('bottomleft', ['Beton', 'AC-BC', 'MCB'], ['#009FBD', '#4A249D', '#F9E2AF']);
-        var legendLapisPondasiAtas1 = createLegend('bottomleft', ['AGG-A', 'Jembatan', 'Lean Concrete'], ['#124076', '#87A922', '#FAA300']);
-        var legendLapisPondasiAtas2 = createLegend('bottomleft', ['AGG-A', 'Jembatan', 'Box Culvert'], ['#124076', '#87A922', '#EE4266']);
-        var legendLapisPondasiBawah = createLegend('bottomleft', ['Box Culvert', 'Jembatan', 'Tanah Pilihan'], ['#114232', '#87A922', '#FCDC2A']);
 
-        // Remove All Legends
-        function removeAllLegends(map) {
-            legendDataGeometrikJalan.remove(map);
-            legendIRI.remove(map);
-            legendSegmenLeger.remove(map);
-            legendSegmenTol.remove(map);
-            legendSegmenPerlengkapan.remove(map);
-            legendSegmenKonstruksi.remove(map);
-            legendLapisPermukaan.remove(map);
-            legendLapisPondasiAtas1.remove(map);
-            legendLapisPondasiAtas2.remove(map);
-            legendLapisPondasiBawah.remove(map);
-        }
+      map.on('overlayadd', function(event) {
 
-        // Show Legend Before Add Layer
-        ruwasjaPolygonLayer.beforeAdd = function (map) {
-            removeAllLegends(map);
-        }
-        administratifPolygonLayer.beforeAdd = function (map) {
-            removeAllLegends(map);
-        }
-        lhrPolygonLayer.beforeAdd = function (map) {
-            removeAllLegends(map);
-        }
-        dataGeometrikJalanPolygonLayer.beforeAdd = function (map) {
-            removeAllLegends(map);
-            legendDataGeometrikJalan.addTo(map);
-        }
-        iriPolygonLayer.beforeAdd = function (map) {
-            removeAllLegends(map);
-            legendIRI.addTo(map);
-        }
-        segmenLegerPolygonLayer.beforeAdd = function (map) {
-            removeAllLegends(map);
-            legendSegmenLeger.addTo(map);
-        }
-        segmenTolPolygonLayer.beforeAdd = function (map) {
-            removeAllLegends(map);
-            legendSegmenTol.addTo(map);
-        }
-        segmenPerlengkapanPolygonLayer.beforeAdd = function (map) {
-            removeAllLegends(map);
-            legendSegmenPerlengkapan.addTo(map);
-        }
-        segmenKonstruksiPolygonLayer.beforeAdd = function (map) {
-            removeAllLegends(map);
-            legendSegmenKonstruksi.addTo(map);
-        }
-        lapisPermukaanPolygonLayer.beforeAdd = function (map) {
-            removeAllLegends(map);
-            legendLapisPermukaan.addTo(map);
-        }
-        lapisPondasiAtas1PolygonLayer.beforeAdd = function (map) {
-            removeAllLegends(map);
-            legendLapisPondasiAtas1.addTo(map);
-        }
-        lapisPondasiAtas2PolygonLayer.beforeAdd = function (map) {
-            removeAllLegends(map);
-            legendLapisPondasiAtas2.addTo(map);
-        }
-        lapisPondasiBawahPolygonLayer.beforeAdd = function (map) {
-            removeAllLegends(map);
-            legendLapisPondasiBawah.addTo(map);
-        }
-        legendSegmenLeger.addTo(map);
+        const layerName = event.name;
+        console.log(`Overlay added: ${layerName}`);
 
-        // Click Event
-        segmenLegerPolygonLayer.on('click', function (e) {
-            var kodeLeger = e.layer.feature.properties.id_leger;
-            $.ajax({
-                url: 'http://117.53.47.111:91/api/leger/get-data/' + kodeLeger,
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Authorization': 'Bearer ' + '{{ Session::get("token") }}'
-                },
-                success: function(response) {
-                    if (response.data_jalan_identifikasi_id) {
-                        var kode_leger = response.kode_leger;
-                        var kode_administratif = `
-                            [${response.data_jalan_identifikasi.kode_provinsi.kode}] Provinsi: ${response.data_jalan_identifikasi.kode_provinsi.nama},
-                            [${response.data_jalan_identifikasi.kode_kabkot.kode}] Kabupaten/Kota: ${response.data_jalan_identifikasi.kode_kabkot.nama},
-                            [${response.data_jalan_identifikasi.kode_kecamatan.kode}] Kecamatan: ${response.data_jalan_identifikasi.kode_kecamatan.nama},
-                            [${response.data_jalan_identifikasi.kode_desakel.kode}] Desa: ${response.data_jalan_identifikasi.kode_desakel.nama}
-                        `;
-                        var nomor_ruas = response.data_jalan_identifikasi.deskripsi_seksi;
-                        var segmen_awal = `
-                            X: ${response.data_jalan_identifikasi.titik_awal_segmen_x},
-                            Y: ${response.data_jalan_identifikasi.titik_awal_segmen_y},
-                            Z: ${response.data_jalan_identifikasi.titik_awal_segmen_z},
-                            Deskripsi: ${response.data_jalan_identifikasi.titik_awal_segmen_deskripsi}
-                        `;
-                        var segmen_akhir = `
-                            X: ${response.data_jalan_identifikasi.titik_akhir_segmen_x},
-                            Y: ${response.data_jalan_identifikasi.titik_akhir_segmen_y},
-                            Z: ${response.data_jalan_identifikasi.titik_akhir_segmen_z},
-                            Deskripsi: ${response.data_jalan_identifikasi.titik_akhir_segmen_deskripsi}
-                        `;
+        // Hapus semua legend sebelum menambahkan yang baru
+        removeAllLegends();
 
-                        // Set View
-                        $('#kode_leger_view').text(kode_leger);
-                        $('#kode_administratif_view').text(kode_administratif);
-                        $('#nomor_ruas_view').text(nomor_ruas);
-                        $('#segmen_awal_view').text(segmen_awal);
-                        $('#segmen_akhir_view').text(segmen_akhir);
+        // Cocokkan layer dengan `baseGroupMapsConfig`
+        const config = baseGroupMapsConfig.find(config => config.name === layerName);
+        if (config && config.legendKey && legends[config.legendKey]) {
+          legends[config.legendKey].addTo(map);
+          console.log(`Legend added for: ${layerName}`);
+        } else {
+          console.warn(`No legend found for: ${layerName}`);
+        }
+      });
 
-                        // Set Form Value
-                        $('#kode_leger_form').val(kode_leger);
-                        $('#kode_administratif_form').val(kode_administratif);
-                        $('#nomor_ruas_form').val(nomor_ruas);
-                        $('#segmen_awal_form').val(segmen_awal);
-                        $('#segmen_akhir_form').val(segmen_akhir);
-                    } else {
-                        // Set View
-                        $('#kode_leger_view').text('-');
-                        $('#kode_administratif_view').text('-');
-                        $('#nomor_ruas_view').text('-');
-                        $('#segmen_awal_view').text('-');
-                        $('#segmen_akhir_view').text('-');
+      map.on('overlayremove', function(event) {
+        const layerName = event.name;
 
-                        // Set Form Value
-                        $('#kode_leger_form').val('-');
-                        $('#kode_administratif_form').val('-');
-                        $('#nomor_ruas_form').val('-');
-                        $('#segmen_awal_form').val('-');
-                        $('#segmen_akhir_form').val('-');
-                    }
-                },
-                error: function(error) {
-                    console.error('Error fetching data:', error);
-                }
-            });
-
-            // // Get the clicked segment geometry
-            // var segmenGeometry = e.layer.feature.geometry;
-
-            // // Iterate through each feature in administratifPolygonLayer
-            // administratifPolygonLayer.eachLayer(function (layer) {
-            //     var administratifGeometry = layer.feature.geometry;
-
-            //     // Check if the segment intersects with the administratif layer
-            //     var intersection = turf.intersect(segmenGeometry, administratifGeometry);
-            //     if (intersection) {
-            //         // Do something with the intersection information
-            //         console.log('Intersection found:', intersection);
-            //         // Example: Display the name of the intersected administrative area
-            //         var adminName = layer.feature.properties.name;
-            //         alert('This segment intersects with: ' + adminName);
-            //     }
-            // });
-        });
+        // Cocokkan layer dengan `baseGroupMapsConfig`
+        const config = baseGroupMapsConfig.find(config => config.name === layerName);
+        if (config && config.legendKey && legends[config.legendKey]) {
+          legends[config.legendKey].remove();
+          console.log(`Legend removed for: ${layerName}`);
+        }
+      });
     </script>
-@endpush
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Inisialisasi Select2 setelah DOM selesai dimuat
+        const startKmSelect = $("#start-km").select2({
+          placeholder: "Select Start KM",
+          allowClear: true,
+          theme: "bootstrap-5",
+          width: "100%",
+        });
+
+        const endKmSelect = $("#end-km").select2({
+          placeholder: "Select End KM",
+          allowClear: true,
+          theme: "bootstrap-5",
+          width: "100%",
+        });
+
+        // Fetch data untuk Start KM dan End KM
+        fetch("http://117.53.47.111:91/api/get-km-options")
+          .then((response) => response.json())
+          .then((data) => {
+            const options = data.data; // Asumsi API mengembalikan { "data": [...] }
+            options.forEach((option) => {
+              const displayText = option.km; // Teks yang ditampilkan
+              const newOption = new Option(displayText, option.km, false, false); // Opsi untuk Select2
+              startKmSelect.append(newOption).trigger("change"); // Tambahkan ke Start KM
+              endKmSelect.append(newOption.cloneNode(true)).trigger("change"); // Tambahkan ke End KM
+            });
+          })
+          .catch((error) => {
+            console.error("Error fetching KM options:", error);
+          });
+
+        // Handle button Apply Filter
+        document.getElementById("apply-filter-button").addEventListener("click", function() {
+          const startKm = $("#start-km").val(); // Nilai Start KM
+          const endKm = $("#end-km").val(); // Nilai End KM
+
+          if (!startKm || !endKm) {
+            alert("Please select both Start KM and End KM!");
+            return;
+          }
+
+          console.log(`Filter applied with Start KM: ${startKm}, End KM: ${endKm}`);
+          // Implementasikan logika filter pada map di sini...
+        });
+      });
+    </script>
+  @endpush

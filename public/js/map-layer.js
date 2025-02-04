@@ -1,10 +1,13 @@
 var url_api = "http://117.53.47.111:91/api/data/aset/";
-var url_api = "http://127.0.0.1:8000/api/data/aset/";
-var segmen_api = "http://127.0.0.1:8000/api/data/segmen/";
+var url_api = "http://117.53.47.111:91/api/data/aset/";
+var segmen_api = "http://117.53.47.111:91/api/data/segmen/";
 var url_icon = location.origin + "/img/map-icons/";
 
-function getAdministratifPolygonLayer() {
-    return new L.GeoJSON.AJAX(url_api + "administratif_polygon", {
+
+function getAdministratifPolygonLayer(start_km, end_km) {
+    const fullUrl = `${url_api}administratif_polygon?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    console.log("admin url: ", fullUrl);
+    return new L.GeoJSON.AJAX(fullUrl, {
         style: function (feature) {
             return {
                 weight: 1,
@@ -26,8 +29,10 @@ function getAdministratifPolygonLayer() {
     });
 }
 
-function getDataGeometrikJalanPolygonLayer() {
-    return new L.GeoJSON.AJAX(url_api + "data_geometrik_jalan_polygon", {
+function getDataGeometrikJalanPolygonLayer(start_km, end_km) {
+    const fullUrl = `${url_api}data_geometrik_jalan_polygon?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    console.log("geom url: ", fullUrl);
+    return new L.GeoJSON.AJAX(fullUrl, {
         style: function (feature) {
             return {
                 weight: 1,
@@ -113,8 +118,10 @@ function getDataGeometrikJalanColor(data) {
     }
 }
 
-function getIRIPolygonLayer() {
-    return new L.GeoJSON.AJAX(url_api + "iri_polygon", {
+function getIRIPolygonLayer(start_km="", end_km="") {
+    const fullUrl = `${url_api}iri_polygon?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    console.log("iri url: ", fullUrl);
+    return new L.GeoJSON.AJAX(fullUrl, {
         style: function (feature) {
             return {
                 weight: 1,
@@ -169,8 +176,9 @@ function getIRIColor(data) {
         : "#198754";
 }
 
-function getJembatanPolygonLayer() {
-    return new L.GeoJSON.AJAX(url_api + "jembatan_polygon", {
+function getJembatanPolygonLayer(start_km, end_km) {
+    const fullUrl = `${url_api}jembatan_polygon?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
         style: function (feature) {
             return {
                 weight: 1,
@@ -193,8 +201,9 @@ function getJembatanPolygonLayer() {
     });
 }
 
-function getLapisPermukaanPolygonLayer() {
-    return new L.GeoJSON.AJAX(url_api + "lapis_permukaan_polygon", {
+function getLapisPermukaanPolygonLayer(start_km, end_km) {
+    const fullUrl = `${url_api}lapis_permukaan_polygon?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
         style: function (feature) {
             return {
                 weight: 1,
@@ -227,8 +236,9 @@ function getLapisPermukaanColor(data) {
     }
 }
 
-function getLapisPondasiAtas1PolygonLayer() {
-    return new L.GeoJSON.AJAX(url_api + "lapis_pondasi_atas1_polygon", {
+function getLapisPondasiAtas1PolygonLayer(start_km, end_km) {
+    const fullUrl = `${url_api}lapis_pondasi_atas1_polygon?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
         style: function (feature) {
             return {
                 weight: 1,
@@ -261,8 +271,9 @@ function getLapisPondasiAtas1Color(data) {
     }
 }
 
-function getLapisPondasiAtas2PolygonLayer() {
-    return new L.GeoJSON.AJAX(url_api + "lapis_pondasi_atas2_polygon", {
+function getLapisPondasiAtas2PolygonLayer(start_km, end_km) {
+    const fullUrl = `${url_api}lapis_pondasi_atas2_polygon?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
         style: function (feature) {
             return {
                 weight: 1,
@@ -295,8 +306,9 @@ function getLapisPondasiAtas2Color(data) {
     }
 }
 
-function getLapisPondasiBawahPolygonLayer() {
-    return new L.GeoJSON.AJAX(url_api + "lapis_pondasi_bawah_polygon", {
+function getLapisPondasiBawahPolygonLayer(start_km, end_km) {
+    const fullUrl = `${url_api}lapis_pondasi_bawah_polygon?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
         style: function (feature) {
             return {
                 weight: 1,
@@ -329,8 +341,9 @@ function getLapisPondasiBawahColor(data) {
     }
 }
 
-function getLHRPolygonLayer() {
-    return new L.GeoJSON.AJAX(url_api + "lhr_polygon", {
+function getLHRPolygonLayer(start_km, end_km) {
+    const fullUrl = `${url_api}lhr_polygon?start_km=${start_km || ''}&end_km=${end_km || ''}`;  
+    return new L.GeoJSON.AJAX(fullUrl, {
         style: function (feature) {
             return {
                 weight: 1,
@@ -377,8 +390,9 @@ function getLHRPolygonLayer() {
     });
 }
 
-function getRuwasjaPolygonLayer() {
-    return new L.GeoJSON.AJAX(url_api + "ruwasja_polygon", {
+function getRuwasjaPolygonLayer(start_km, end_km) {
+    const fullUrl = `${url_api}ruwasja_polygon?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
         style: function (feature) {
             return {
                 weight: 1,
@@ -397,8 +411,9 @@ function getRuwasjaPolygonLayer() {
     });
 }
 
-function getSegmenKonstruksiPolygonLayer() {
-    return new L.GeoJSON.AJAX(url_api + "segmen_konstruksi_polygon", {
+function getSegmenKonstruksiPolygonLayer(start_km, end_km) {
+    const fullUrl = `${url_api}segmen_konstruksi_polygon?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
         style: function (feature) {
             return {
                 weight: 1,
@@ -442,8 +457,9 @@ function getSegmenKonstruksiColor(data) {
 const legerRoute = document.getElementById('admin-map').getAttribute('data-route');
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-function getSegmenLegerPolygonLayer() {
-    return new L.GeoJSON.AJAX(url_api + "segmen_leger_polygon", {
+function getSegmenLegerPolygonLayer(start_km, end_km) {
+    const fullUrl = `${url_api}segmen_leger_polygon?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
         style: function (feature) {
             return {
                 weight: 1,
@@ -508,8 +524,9 @@ function getSegmenLegerColor(data) {
     }
 }
 
-function getSegmenPerlengkapanPolygonLayer() {
-    return new L.GeoJSON.AJAX(url_api + "segmen_perlengkapan_polygon", {
+function getSegmenPerlengkapanPolygonLayer(start_km, end_km) { 
+    const fullUrl = `${url_api}segmen_perlengkapan_polygon?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
         style: function (feature) {
             return {
                 weight: 1,
@@ -541,8 +558,9 @@ function getSegmenPerlengkapanColor(data) {
     }
 }
 
-function getSegmenTolPolygonLayer() {
-    return new L.GeoJSON.AJAX(url_api + "segmen_tol_polygon", {
+function getSegmenTolPolygonLayer(start_km, end_km) {
+    const fullUrl = `${url_api}segmen_tol_polygon?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
         style: function (feature) {
             return {
                 weight: 1,
@@ -574,9 +592,10 @@ function getSegmenTolColor(data) {
     }
 }
 
-function getLampuLalulintasPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "lampu_lalulintas_point", {
-        pointToLayer: function (feature, latlng) {
+function getLampuLalulintasPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}lampu_lalulintas_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "lampu.png",
@@ -587,9 +606,10 @@ function getLampuLalulintasPointLayer() {
     });
 }
 
-function getManholePointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "manhole_point", {
-        pointToLayer: function (feature, latlng) {
+function getManholePointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}manhole_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "manhole.png",
@@ -600,9 +620,10 @@ function getManholePointLayer() {
     });
 }
 
-function getGerbangPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "gerbang_point", {
-        pointToLayer: function (feature, latlng) {
+function getGerbangPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}gerbang_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "gerbang.png",
@@ -613,9 +634,10 @@ function getGerbangPointLayer() {
     });
 }
 
-function getPatokHMPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "patok_hm_point", {
-        pointToLayer: function (feature, latlng) {
+function getPatokHMPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}patok_hm_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "patok_hm.png",
@@ -626,9 +648,10 @@ function getPatokHMPointLayer() {
     });
 }
 
-function getPatokKMPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "patok_km_point", {
-        pointToLayer: function (feature, latlng) {
+function getPatokKMPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}patok_km_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "patok_km.png",
@@ -639,9 +662,10 @@ function getPatokKMPointLayer() {
     });
 }
 
-function getPatokLJPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "patok_lj_point", {
-        pointToLayer: function (feature, latlng) {
+function getPatokLJPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}patok_lj_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "patok_lj.png",
@@ -652,9 +676,10 @@ function getPatokLJPointLayer() {
     });
 }
 
-function getPatokRMJPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "patok_rmj_point", {
-        pointToLayer: function (feature, latlng) {
+function getPatokRMJPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}patok_rmj_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "patok_rmj.png",
@@ -665,9 +690,10 @@ function getPatokRMJPointLayer() {
     });
 }
 
-function getPatokROWPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "patok_row_point", {
-        pointToLayer: function (feature, latlng) {
+function getPatokROWPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}patok_row_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "patok_row.png",
@@ -678,9 +704,10 @@ function getPatokROWPointLayer() {
     });
 }
 
-function getPatokPemanduPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "patok_pemandu_point", {
-        pointToLayer: function (feature, latlng) {
+function getPatokPemanduPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}patok_pemandu_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "patok_pemandu.png",
@@ -691,9 +718,10 @@ function getPatokPemanduPointLayer() {
     });
 }
 
-function getReflektorPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "reflektor_point", {
-        pointToLayer: function (feature, latlng) {
+function getReflektorPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}reflektor_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "reflektor.png",
@@ -704,9 +732,10 @@ function getReflektorPointLayer() {
     });
 }
 
-function getRambuLalulintasPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "rambu_lalulintas_point", {
-        pointToLayer: function (feature, latlng) {
+function getRambuLalulintasPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}rambu_lalulintas_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "rambu_lalu_lintas.png",
@@ -717,9 +746,10 @@ function getRambuLalulintasPointLayer() {
     });
 }
 
-function getRambuPenunjukarahPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "rambu_penunjukarah_point", {
-        pointToLayer: function (feature, latlng) {
+function getRambuPenunjukarahPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}rambu_penunjukarah_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "rambu_penunjuk_arah.png",
@@ -730,9 +760,10 @@ function getRambuPenunjukarahPointLayer() {
     });
 }
 
-function getRumahKabelPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "rumah_kabel_point", {
-        pointToLayer: function (feature, latlng) {
+function getRumahKabelPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}rumah_kabel_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "rumah_kabel.png",
@@ -743,9 +774,10 @@ function getRumahKabelPointLayer() {
     });
 }
 
-function getStaTextPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "sta_text_point", {
-        pointToLayer: function (feature, latlng) {
+function getStaTextPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}sta_text_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "sta_text.png",
@@ -756,9 +788,10 @@ function getStaTextPointLayer() {
     });
 }
 
-function getTiangListrikPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "tiang_listrik_point", {
-        pointToLayer: function (feature, latlng) {
+function getTiangListrikPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}tiang_listrik_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "listrik.png",
@@ -769,9 +802,10 @@ function getTiangListrikPointLayer() {
     });
 }
 
-function getTiangTeleponPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "tiang_telepon_point", {
-        pointToLayer: function (feature, latlng) {
+function getTiangTeleponPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}tiang_telepon_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "telepon.png",
@@ -782,9 +816,10 @@ function getTiangTeleponPointLayer() {
     });
 }
 
-function getVMSPointLayer() {
-    return new L.GeoJSON.AJAX(url_api + "vms_point", {
-        pointToLayer: function (feature, latlng) {
+function getVMSPointLayer(start_km, end_km) {
+    const fullUrl = `${url_api}vms_point?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl, {
+        pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: url_icon + "vms.png",
@@ -795,66 +830,82 @@ function getVMSPointLayer() {
     });
 }
 
-function getBatasDesaLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "batas_desa_line");
+function getBatasDesaLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}batas_desa_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getBoxCulvertLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "box_culvert_line");
+function getBoxCulvertLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}box_culvert_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getBPTLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "bpt_line");
+function getBPTLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}bpt_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getBronjongLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "bronjong_line");
+function getBronjongLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}bronjong_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getConcreteBarrierLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "concrete_barrier_line");
+function getConcreteBarrierLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}concrete_barrier_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getGorongGorongLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "gorong_gorong_line");
+function getGorongGorongLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}gorong_gorong_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getGuardrailLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "guardrail_line");
+function getGuardrailLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}guardrail_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getJalanLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "jalan_line");
+function getJalanLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}jalan_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getListrikBawahtanahLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "listrik_bawahtanah_line");
+function getListrikBawahtanahLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}listrik_bawahtanah_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getMarkaLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "marka_line");
+function getMarkaLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}marka_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getPagarOperasionalLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "pagar_operasional_line");
+function getPagarOperasionalLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}pagar_operasional_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getPitaKejutLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "pita_kejut_line");
+function getPitaKejutLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}pita_kejut_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getRiolLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "riol_line");
+function getRiolLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}riol_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getSaluranLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "saluran_line");
+function getSaluranLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}saluran_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getSungaiLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "sungai_line");
+function getSungaiLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}sungai_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
 
-function getTeleponBawahtanahLineLayer() {
-    return new L.GeoJSON.AJAX(url_api + "telepon_bawahtanah_line");
+function getTeleponBawahtanahLineLayer(start_km, end_km) {
+    const fullUrl = `${url_api}telepon_bawahtanah_line?start_km=${start_km || ''}&end_km=${end_km || ''}`;
+    return new L.GeoJSON.AJAX(fullUrl);
 }
