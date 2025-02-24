@@ -43,6 +43,7 @@ Route::post('/leger/view/detail', [LegerJalanUtamaController::class, 'legerViewD
 Route::post('/leger/edit/detail', [LegerJalanUtamaController::class, 'legerEditDetail'])->name('admin.leger.jalanUtama.edit.detail');
 Route::post('/leger/generate', [LegerJalanUtamaController::class, 'legerGenerate'])->name('admin.leger.jalanUtama.generate');
 Route::post('/leger/print', [LegerJalanUtamaController::class, 'legerPrint'])->name('admin.leger.jalanUtama.print');
+Route::post('/leger/print-all', [LegerJalanUtamaController::class, 'legerPrintAll'])->name('admin.leger.jalanUtama.print-all');
 
 
 // Input Page

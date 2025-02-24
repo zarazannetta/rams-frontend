@@ -27,20 +27,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-body">
-                            @php
-                                $firstLegerId = isset($data['segmen'][0]) ? $data['segmen'][0]['id_leger'] : null;
-                                $lastLegerId =
-                                    isset($data['segmen']) && count($data['segmen']) > 0
-                                        ? $data['segmen'][count($data['segmen']) - 1]['id_leger']
-                                        : null;
-                            @endphp
-
                             <h4>Download seluruh leger</h4>
-                                <form action="{{ route('admin.leger.jalanUtama.print') }}" method="POST" target="_blank">
+                                <form action="{{ route('admin.leger.jalanUtama.print-all') }}" method="POST" target="_blank">
                                     @csrf
                                     <input type="hidden" name="jalan_tol_id" id="jalan_tol_id" value="{{ $jalan_tol_id }}">
-                                    <input type="hidden" name="leger_id_awal" id="leger_id_awal" value="{{ $firstLegerId }}">
-                                    <input type="hidden" name="leger_id_akhir" id="leger_id_akhir" value="{{ $lastLegerId }}">
                                     <button type="submit" class="btn btn-info btn-sm">
                                         Download
                                     </button>

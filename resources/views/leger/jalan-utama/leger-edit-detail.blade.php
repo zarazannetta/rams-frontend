@@ -95,6 +95,7 @@
                         <div class="card-tools">
                             <form action="{{ route('admin.leger.jalanUtama.generate') }}" method="POST">
                                 @csrf
+                                <input type="hidden" name="jalan_tol_id" id="jalan_tol_id" value="{{ $jalan_tol_id }}">
                                 <button type="submit" class="btn btn-info btn-sm">
                                     Update
                                 </button>

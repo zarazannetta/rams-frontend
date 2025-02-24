@@ -117,4 +117,30 @@ class LegerJalanUtamaController extends Controller
         }
         $mpdf->Output('Leger Kartu Jalan Utama Test.pdf', 'I');
     }
+
+    public function legerPrintAll(Request $request)
+    {
+        $url = "http://117.53.47.111:91/api/leger/jalan-utama-all/{$request->jalan_tol_id}";
+        $data = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer ' . $request->session()->get('token')
+        ])->get($url);
+        $data = $data->json();
+
+        $mpdf = new Mpdf(['tempDir' => __DIR__ . '/../../../public/temp/', 'orientation' => 'L', 'format' => 'A3']);
+        $mpdf->useSubstitutions = false;
+        $totalPages = count($data);
+
+        foreach ($data as $index => $page) {
+            $html = view('download.templateLegerJalan', ['data' => $page]);
+            $mpdf->writeHTML($html);
+            $mpdf->AddPage();
+            $html_img = view('download.templateLegerJalanBelakang');
+            $mpdf->writeHTML($html_img);
+            if ($index < $totalPages - 1) {
+                $mpdf->AddPage();
+            }
+        }
+        $mpdf->Output('Leger Kartu Jalan Utama Test.pdf', 'I');
+    }
 }
