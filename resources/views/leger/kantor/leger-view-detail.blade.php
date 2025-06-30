@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Ruas Jalan Tol {{ $data['ruas']['nama'] }}</h1>
+                    <h1>Ruas Jalan Tol {{ $data['ruas']['nama'] ?? '-' }}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb
@@ -49,8 +49,8 @@
                                     <label for="leger_id_awal">KM Awal</label>
                                     <select class="form-control select2" style="width: 100%" name="leger_id_awal"
                                         id="leger_id_awal" onchange="updateMap()">
-                                        @foreach ($data['segmen'] as $l)
-                                            <option value={{ $l['id_leger'] }}>{{ $l['km'] }}</option>
+                                        @foreach (($data['segmen'] ?? []) as $l)
+                                            <option value="{{ $l['id_leger'] }}">{{ $l['km'] }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -58,8 +58,8 @@
                                     <label for="leger_id_akhir">KM Akhir</label>
                                     <select class="form-control select2" style="width: 100%" name="leger_id_akhir"
                                         id="leger_id_akhir" onchange="updateMap()">
-                                        @foreach ($data['segmen'] as $l)
-                                            <option value={{ $l['id_leger'] }}>{{ $l['km'] }}</option>
+                                        @foreach (($data['segmen'] ?? []) as $l)
+                                            <option value="{{ $l['id_leger'] }}">{{ $l['km'] }}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -25,7 +25,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $url = "http://117.53.47.111:91/api/login";
+        $url = "http://127.0.0.1:8000/api/login";
         $response = Http::withHeaders([
             'Accept' => 'application/json'
         ])->post($url, [

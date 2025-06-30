@@ -13,70 +13,28 @@ class LegerKantorController extends Controller
     public function legerViewSelect(Request $request)
     {
         $api = "http://127.0.0.1:8000/api/leger/ruas";
-        $data = Http::withHeaders([
+        $response = Http::withHeaders([
             'Accept' => 'application/json',
             'Authorization' => 'Bearer ' . $request->session()->get('token'),
         ])->get($api)->json();
+
+        $data = $response['data'] ?? [];
 
         return view('leger.kantor.leger-view-select', compact('data'));
-    }
-
-    public function legerEditSelect(Request $request)
-    {
-        $api = "http://127.0.0.1:8000/api/leger/ruas";
-        $data = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . $request->session()->get('token'),
-        ])->get($api)->json();
-
-        return view('leger.kantor.leger-edit-select', compact('data'));
     }
 
     public function legerViewDetail(Request $request)
     {
         $api = "http://127.0.0.1:8000/api/leger/segmen/{$request->jalan_tol_id}";
-        $data = Http::withHeaders([
+        $response = Http::withHeaders([
             'Accept' => 'application/json',
             'Authorization' => 'Bearer ' . $request->session()->get('token'),
         ])->get($api)->json();
 
+        $data = $response['data'] ?? []; 
+
         $jalan_tol_id = $request->jalan_tol_id;
         return view('leger.kantor.leger-view-detail', compact('data', 'jalan_tol_id'));
-    }
-
-    public function legerEditDetail(Request $request)
-    {
-        $api_segmen = "http://127.0.0.1:8000/api/leger/segmen/{$request->jalan_tol_id}";
-        $api_leger = "http://127.0.0.1:8000/api/leger/kantor-all/{$request->jalan_tol_id}";
-
-        $data_segmen = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . $request->session()->get('token'),
-        ])->get($api_segmen)->json();
-
-        $data_leger = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . $request->session()->get('token'),
-        ])->get($api_leger)->json();
-
-        $jalan_tol_id = $request->jalan_tol_id;
-        return view('leger.kantor.leger-edit-detail', compact('data_segmen', 'data_leger', 'jalan_tol_id'));
-    }
-
-    public function legerGenerate(Request $request)
-    {
-        $api = "http://127.0.0.1:8000/api/leger/kantor/populate/{$request->jalan_tol_id}";
-
-        $response = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . $request->session()->get('token'),
-        ])->get($api);
-
-        $status = $response->successful()
-            ? ['type' => 'success', 'message' => 'Leger Kantor generated successfully!']
-            : ['type' => 'error', 'message' => 'Failed to generate leger Kantor. ' . $response->body()];
-
-        return redirect()->route('admin.leger.kantor.edit.select')->with('status', $status);
     }
 
     public function legerPrint(Request $request)
@@ -91,6 +49,9 @@ class LegerKantorController extends Controller
         $mpdf->useSubstitutions = false;
 
         foreach ($data as $index => $page) {
+            $coverHtml = view('download.templateLegerKantorOperasionalCover')->render();
+            $mpdf->writeHTML($coverHtml);
+            $mpdf->AddPage();
             $html = view('download.templateLegerKantorOperasional', ['data' => $page]);
             $mpdf->writeHTML($html);
             $mpdf->AddPage();
@@ -101,7 +62,7 @@ class LegerKantorController extends Controller
             }
         }
 
-        $mpdf->Output('Leger Kantor Tol.pdf', 'I');
+        $mpdf->Output('Leger Kantor Operasional.pdf', 'I');
     }
 
     public function legerPrintAll(Request $request)
@@ -116,6 +77,9 @@ class LegerKantorController extends Controller
         $mpdf->useSubstitutions = false;
 
         foreach ($data as $index => $page) {
+            $coverHtml = view('download.templateLegerKantorOperasionalCover')->render();
+            $mpdf->writeHTML($coverHtml);
+            $mpdf->AddPage();
             $html = view('download.templateLegerKantorOperasional', ['data' => $page]);
             $mpdf->writeHTML($html);
             $mpdf->AddPage();
@@ -125,7 +89,6 @@ class LegerKantorController extends Controller
                 $mpdf->AddPage();
             }
         }
-
-        $mpdf->Output('Leger Kantor Tol - All.pdf', 'I');
+        $mpdf->Output('Leger Kantor Operasional - All.pdf', 'I');
     }
 }
